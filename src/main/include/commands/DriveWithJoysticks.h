@@ -9,6 +9,14 @@ class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWi
  public:
   explicit DriveWithJoysticks(DriveTrain* driveTrain);
 
+  void Initialize() override;
+
+  void Execute() override;
+
+  void End(bool interrupted) override;
+
+  bool IsFinished() override;
+
  private:
   DriveTrain* m_driveTrain;
 };

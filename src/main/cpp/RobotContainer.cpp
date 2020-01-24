@@ -1,6 +1,6 @@
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_driveTrain) {
+RobotContainer::RobotContainer() : m_driveWithJoysticksCommand(&m_driveTrain), m_autonomousCommand(&m_driveTrain) {
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings

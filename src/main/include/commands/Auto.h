@@ -1,17 +1,13 @@
 #pragma once
 
+#include <frc2/command/SequentialCommandGroup.h>
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
+#include "subsystems/DriveTrain.h"
+#include "commands/DriveWithJoysticks.h"
 
-class Auto : public frc2::CommandHelper<frc2::CommandBase, Auto> {
+class Auto : public frc2::CommandHelper<frc2::SequentialCommandGroup, Auto> {
  public:
-  Auto();
+  Auto(DriveTrain* driveTrain);
 
-  void Initialize() override;
-
-  void Execute() override;
-
-  void End(bool interrupted) override;
-
-  bool IsFinished() override;
 };

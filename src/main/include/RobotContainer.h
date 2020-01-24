@@ -2,7 +2,9 @@
 
 #include <frc2/command/Command.h>
 
+#include "Constants.h"
 #include "commands/DriveWithJoysticks.h"
+#include "commands/Auto.h"
 #include "subsystems/DriveTrain.h"
 
 class RobotContainer {
@@ -12,9 +14,12 @@ class RobotContainer {
   frc2::Command* GetAutonomousCommand();
 
  private:
-  // The robot's subsystems and commands are defined here...
+  // subsytems
   DriveTrain m_driveTrain;
-  DriveWithJoysticks m_autonomousCommand;
+
+  // commands
+  DriveWithJoysticks m_driveWithJoysticksCommand;
+  Auto m_autonomousCommand;
 
   void ConfigureButtonBindings();
 };
