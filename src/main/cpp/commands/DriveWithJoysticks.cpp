@@ -10,7 +10,7 @@ void DriveWithJoysticks::Initialize() {
 }
 
 void DriveWithJoysticks::Execute() {
-    m_driveTrain->ArcadeDrive(m_forward(), -m_turn());
+    m_driveTrain->ArcadeDrive(m_forward(), m_turn());
 }
 
 void DriveWithJoysticks::End(bool interrupted) {
