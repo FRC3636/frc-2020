@@ -2,6 +2,7 @@
 
 DriveTrain::DriveTrain() {
   // Implementation of subsystem constructor goes here.
+  resetEncoders();
   tankDrive(0, 0);
 }
 

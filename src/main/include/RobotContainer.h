@@ -8,6 +8,7 @@
 #include "commands/DriveWithJoysticks.h"
 #include "commands/Auto.h"
 #include "subsystems/DriveTrain.h"
+#include "subsystems/ControlPanelHandler.h"
 
 class RobotContainer {
  public:
@@ -23,6 +24,7 @@ class RobotContainer {
 
   // subsytems
   DriveTrain m_driveTrain;
+  ControlPanelHandler m_controlPanelHandler;
 
   // commands
   Auto m_auto;

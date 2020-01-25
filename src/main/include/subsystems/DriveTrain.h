@@ -4,7 +4,6 @@
 #include <frc/VictorSP.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/Encoder.h>
-#include <rev/ColorSensorV3.h>
 #include "Constants.h"
 
 class DriveTrain : public frc2::SubsystemBase {
