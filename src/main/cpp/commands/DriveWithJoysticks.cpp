@@ -1,7 +1,8 @@
 #include "commands/DriveWithJoysticks.h"
 
-DriveWithJoysticks::DriveWithJoysticks(DriveTrain* driveTrain) : m_driveTrain{driveTrain} {
-    AddRequirements({m_driveTrain});   
+DriveWithJoysticks::DriveWithJoysticks(DriveTrain* driveTrain, std::function<double()> forward, std::function<double()> turn)
+ : m_driveTrain{driveTrain}, m_forward{forward}, m_turn{turn} {
+    AddRequirements({driveTrain});   
 }
 
 void DriveWithJoysticks::Initialize() {
@@ -9,7 +10,7 @@ void DriveWithJoysticks::Initialize() {
 }
 
 void DriveWithJoysticks::Execute() {
-
+    m_driveTrain->ArcadeDrive(m_forward(), -m_turn());
 }
 
 void DriveWithJoysticks::End(bool interrupted) {

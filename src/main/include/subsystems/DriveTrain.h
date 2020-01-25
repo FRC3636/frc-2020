@@ -1,9 +1,9 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/WPILib.h>
+#include <frc/VictorSP.h>
+#include <frc/drive/DifferentialDrive.h>
 #include "Constants.h"
-#include "commands/DriveWithJoysticks.h"
 
 class DriveTrain : public frc2::SubsystemBase {
  public:
