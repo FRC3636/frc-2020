@@ -6,15 +6,15 @@ DriveWithJoysticks::DriveWithJoysticks(DriveTrain* driveTrain, std::function<dou
 }
 
 void DriveWithJoysticks::Initialize() {
-    m_driveTrain->ArcadeDrive(0, 0);
+    m_driveTrain->arcadeDrive(0, 0);
 }
 
 void DriveWithJoysticks::Execute() {
-    m_driveTrain->ArcadeDrive(m_forward(), m_turn());
+    m_driveTrain->arcadeDrive(m_forward(), m_turn());
 }
 
 void DriveWithJoysticks::End(bool interrupted) {
-    m_driveTrain->ArcadeDrive(0, 0);
+    m_driveTrain->arcadeDrive(0, 0);
 }
 
 bool DriveWithJoysticks::IsFinished() {

@@ -3,15 +3,22 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/VictorSP.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <frc/Encoder.h>
+#include <rev/ColorSensorV3.h>
 #include "Constants.h"
 
 class DriveTrain : public frc2::SubsystemBase {
  public:
   DriveTrain();
 
-  void ArcadeDrive(float forward, float turn);
+  void arcadeDrive(float forward, float turn);
 
-  void TankDrive(float leftMotor, float rightMotor);
+  void tankDrive(float leftMotor, float rightMotor);
+
+  void resetEncoders();
+
+  double getLeftEncoderValue();
+  double getRightEncoderValue();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
@@ -19,4 +26,7 @@ class DriveTrain : public frc2::SubsystemBase {
   frc::VictorSP m_leftMotor{constant::LEFT_MOTOR_PORT};
   frc::VictorSP m_rightMotor{constant::RIGHT_MOTOR_PORT};
   frc::DifferentialDrive m_myRobot{m_leftMotor, m_rightMotor};
+
+  frc::Encoder m_leftEncoder{constant::LEFT_ENCODER_PORT_1, constant::LEFT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
+  frc::Encoder m_rightEncoder{constant::RIGHT_ENCODER_PORT_1, constant::RIGHT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
 };
