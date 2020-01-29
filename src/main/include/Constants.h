@@ -10,6 +10,7 @@ namespace constant {
     //PWM
     static constexpr int LEFT_MOTOR_PORT = 0;
     static constexpr int RIGHT_MOTOR_PORT = 1;
+    static constexpr int ELEVATOR_MOTOR_PORT = 2;
 
     //DIO
     static constexpr int LEFT_ENCODER_PORT_1 = 0;
