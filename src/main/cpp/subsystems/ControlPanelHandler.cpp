@@ -33,5 +33,5 @@ void ControlPanelHandler::Periodic() {
       colorString = "Unknown";
     }
 
-    //std::cout << "Color: " << colorString << " Confidence: " << confidence << std::endl;
+    std::cout << "Color: " << colorString << " Confidence: " << confidence << std::endl;
 }
