@@ -1,6 +1,7 @@
 #pragma once
 
 #include <frc2/command/Command.h>
+#include <frc2/command/button/JoystickButton.h>
 #include <frc/Joystick.h>
 #include <frc/XboxController.h>
 
@@ -25,8 +26,8 @@ class RobotContainer {
   frc::Joystick m_rightJoystick{constant::RIGHT_JOYSTICK_PORT};
   frc::XboxController m_controller{constant::CONTROLLER_PORT};
 
-  //frc2::JoystickButton m_raiseElevatorButton(&m_leftJoystick, 4);
-  //frc2::JoystickButton m_lowerElevatorButton(&m_rightJoystick, 4);
+  frc2::JoystickButton m_raiseElevatorButton{&m_leftJoystick, 4};
+  frc2::JoystickButton m_lowerElevatorButton{&m_rightJoystick, 4};
 
   // subsytems
   DriveTrain m_driveTrain;

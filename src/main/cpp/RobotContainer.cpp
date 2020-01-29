@@ -13,9 +13,9 @@ RobotContainer::RobotContainer() : m_auto(&m_driveTrain) {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  //m_raiseElevatorButton.WhenPressed(RaiseElevator(m_climb));
+  m_raiseElevatorButton.WhenPressed(RaiseElevator(&m_climb));
 
-  //m_lowerElevatorButton.WhenPressed(LowerElevator(m_climb));
+  m_lowerElevatorButton.WhenPressed(LowerElevator(&m_climb));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
