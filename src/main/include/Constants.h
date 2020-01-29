@@ -4,6 +4,9 @@
 #include <frc/util/Color.h>
 
 namespace constant {
+    //BOT INFO
+    static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
+
     //I2CPort
     static constexpr auto I2C_PORT = frc::I2C::Port::kOnboard;
 
