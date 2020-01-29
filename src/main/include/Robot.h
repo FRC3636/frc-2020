@@ -2,6 +2,9 @@
 
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableEntry.h"
+#include "networktables/NetworkTableInstance.h"
 
 #include "RobotContainer.h"
 
@@ -24,4 +27,10 @@ class Robot : public frc::TimedRobot {
 
 
   RobotContainer m_container;
+
+  nt::NetworkTableEntry xEntry;
+  nt::NetworkTableEntry yEntry;
+
+  double x = 0;
+  double y = 0;
 };

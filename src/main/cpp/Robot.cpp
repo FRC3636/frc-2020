@@ -3,9 +3,19 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+  auto inst = nt::NetworkTableInstance::GetDefault();
+  auto table = inst.GetTable("datatable");
+  xEntry = table->GetEntry("X");
+  yEntry = table->GetEntry("Y");
+}
 
-void Robot::RobotPeriodic() {}
+void Robot::RobotPeriodic() {
+  xEntry.SetDouble(x);
+  xEntry.SetDouble(y);
+  x += 0.05;
+  y += 0.05;
+}
 
 void Robot::DisabledInit() {}
 
