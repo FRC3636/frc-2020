@@ -1,7 +1,6 @@
 #include "commands/DriveWithJoysticks.h"
 
-DriveWithJoysticks::DriveWithJoysticks(DriveTrain* driveTrain, std::function<double()> forward, std::function<double()> turn)
- : m_driveTrain{driveTrain}, m_forward{forward}, m_turn{turn} {
+DriveWithJoysticks::DriveWithJoysticks(DriveTrain* driveTrain, std::function<double()> forward, std::function<double()> turn) : m_driveTrain{driveTrain}, m_forward{forward}, m_turn{turn} {
     AddRequirements({driveTrain});   
 }
 

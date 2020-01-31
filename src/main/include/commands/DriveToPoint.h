@@ -19,8 +19,7 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class DriveToPoint
-    : public frc2::CommandHelper<frc2::CommandBase, DriveToPoint> {
+class DriveToPoint : public frc2::CommandHelper<frc2::CommandBase, DriveToPoint> {
  public:
   DriveToPoint(DriveTrain* driveTrain, double x, double y);
 

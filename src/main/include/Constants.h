@@ -1,9 +1,13 @@
 #pragma once
 
+#include <utility>
 #include <frc/I2C.h>
 #include <frc/util/Color.h>
 
 namespace constant {
+    static constexpr std::array<std::pair<float, float>, 1> LIST_OF_TURNS {std::pair<float, float>{0, 60*2.54}};
+    static constexpr std::array<std::pair<float, float>, 1> LIST_OF_FORWARDS {std::pair<float, float>{0, 60*2.54}};
+
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
 

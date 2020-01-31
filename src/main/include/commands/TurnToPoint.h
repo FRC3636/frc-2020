@@ -19,8 +19,7 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class TurnToPoint
-    : public frc2::CommandHelper<frc2::CommandBase, TurnToPoint> {
+class TurnToPoint : public frc2::CommandHelper<frc2::CommandBase, TurnToPoint> {
  public:
   TurnToPoint(DriveTrain* driveTrain, float x, float y);
 

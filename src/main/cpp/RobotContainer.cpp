@@ -5,7 +5,8 @@ RobotContainer::RobotContainer() : m_auto(&m_driveTrain) {
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
     [this] { return -m_leftJoystick.GetY(); },
-    [this] { return m_rightJoystick.GetX(); }));
+    [this] { return m_rightJoystick.GetX(); }
+  ));
 
   // Configure the button bindings
   ConfigureButtonBindings(); 

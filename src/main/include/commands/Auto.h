@@ -6,6 +6,7 @@
 #include "subsystems/DriveTrain.h"
 #include "commands/TurnToPoint.h"
 #include "commands/DriveToPoint.h"
+#include "Constants.h"
 
 class Auto : public frc2::CommandHelper<frc2::SequentialCommandGroup, Auto> {
  public:
