@@ -13,7 +13,9 @@ DriveToPoint::DriveToPoint(DriveTrain* driveTrain, double x, double y) : m_drive
 }
 
 // Called when the command is initially scheduled.
-void DriveToPoint::Initialize() {}
+void DriveToPoint::Initialize() {
+  m_driveTrain->arcadeDrive(0, 0);
+}
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToPoint::Execute() {
@@ -25,7 +27,9 @@ void DriveToPoint::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void DriveToPoint::End(bool interrupted) {}
+void DriveToPoint::End(bool interrupted) {
+  m_driveTrain->arcadeDrive(0, 0);
+}
 
 // Returns true when the command should end.
 bool DriveToPoint::IsFinished() { return m_driveTrain->m_drivePID.calculate(m_driveTrain->m_botDistance) < 0.05; }

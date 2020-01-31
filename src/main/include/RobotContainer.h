@@ -35,7 +35,7 @@ class RobotContainer {
   Climb m_climb;
 
   // commands
-  Auto m_auto;
+  Auto m_auto{&m_driveTrain};
 
   void ConfigureButtonBindings();
 };

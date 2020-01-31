@@ -13,7 +13,10 @@ TurnToPoint::TurnToPoint(DriveTrain* driveTrain, float x, float y) : m_driveTrai
 }
 
 // Called when the command is initially scheduled.
-void TurnToPoint::Initialize() {}
+void TurnToPoint::Initialize() {
+  std::cout << "started" << std::endl;
+  m_driveTrain->arcadeDrive(0, 0);
+}
 
 // Called repeatedly when this Command is scheduled to run
 void TurnToPoint::Execute() {
@@ -25,7 +28,9 @@ void TurnToPoint::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void TurnToPoint::End(bool interrupted) {}
+void TurnToPoint::End(bool interrupted) {
+  m_driveTrain->arcadeDrive(0, 0);
+}
 
 // Returns true when the command should end.
 bool TurnToPoint::IsFinished() { 

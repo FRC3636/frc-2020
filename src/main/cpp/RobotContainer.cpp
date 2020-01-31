@@ -1,6 +1,6 @@
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_auto(&m_driveTrain) {
+RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
