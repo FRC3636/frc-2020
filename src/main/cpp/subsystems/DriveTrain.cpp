@@ -12,7 +12,7 @@ void DriveTrain::Periodic() {
 
 void DriveTrain::updateOdometry() {
   double tR = m_rightEncoder.Get() - m_oldTR;
-  double tL = m_leftEncoder.Get() - m_oldTL;
+  double tL = -m_leftEncoder.Get() - m_oldTL;
 
   double dTheta = ((tR - tL)*0.0184)/(constant::WIDTH_BETWEEN_WHEELS);
   m_botDirection += dTheta;
@@ -26,10 +26,13 @@ void DriveTrain::updateOdometry() {
   m_botY += dY;
 
   double dX = dAV * std::sin(m_botDirection);
-  m_botX -= dX;
+  m_botX += dX;
 
-  m_oldTR = m_rightEncoder.Get();
-  m_oldTL = m_leftEncoder.Get();
+  std::cout << "X: " << m_botX << ", Y: " << m_botY << std::endl;
+  std::cout << "Distance: " << m_botDistance << ", Direction: " << m_botDirection << std::endl;
+
+  m_oldTR = tR;
+  m_oldTL = tL;
 }
 
 void DriveTrain::arcadeDrive(float forward, float turn) {
@@ -51,10 +54,26 @@ void DriveTrain::resetEncoders() {
   m_leftEncoder.SetMaxPeriod(10);
   m_leftEncoder.SetDistancePerPulse(1);
 
-  m_oldTL = 0.0;
   m_oldTR = 0.0;
-  m_botDirection = 0.0;
+  m_oldTL = 0.0;
+  m_velocity = 0;
   m_botDistance = 0.0;
+  m_botDirection = 0.0;
   m_botX = 0.0;
   m_botY = 0.0;
+}
+
+double DriveTrain::getBotDirection() {
+  while(m_botDirection >= M_PI) {
+    m_botDirection -= 2.0*M_PI;
+  }
+  while(m_botDirection <= -M_PI) {
+    m_botDirection += 2.0*M_PI;
+  }
+
+  return m_botDirection;
+}
+
+double DriveTrain::getBotDistance() {
+  return m_botDistance;
 }

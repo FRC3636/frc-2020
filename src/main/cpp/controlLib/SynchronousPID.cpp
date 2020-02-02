@@ -13,7 +13,7 @@ SynchronousPID::SynchronousPID(double Kp, double Ki, double Kd, double starting_
 double SynchronousPID::calculate(double input) {
     m_last_input = input;
     m_error = m_setpoint - input;
-    std::cout << "error: " << m_error << std::endl;
+    //std::cout << "error: " << m_error << std::endl;
     if (m_continuous) {
         if (std::abs(m_error) > (m_maximumInput - m_minimumInput) / 2) {
             if (m_error > 0) {

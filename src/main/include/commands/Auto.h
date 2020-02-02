@@ -11,5 +11,4 @@
 class Auto : public frc2::CommandHelper<frc2::SequentialCommandGroup, Auto> {
  public:
   Auto(DriveTrain* driveTrain);
-
 };

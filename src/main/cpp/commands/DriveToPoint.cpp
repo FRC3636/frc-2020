@@ -19,10 +19,9 @@ void DriveToPoint::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToPoint::Execute() {
-  double diffX = m_targetX - m_driveTrain->m_botX;
-  double diffY = m_targetY - m_driveTrain->m_botY;
-  m_driveTrain->m_drivePID.setSetPoint(getDistance(diffX, diffY));
-  double v = m_driveTrain->m_drivePID.calculate(m_driveTrain->m_botDistance);
+  std::cout << "Goal Distance: " << getDistance(m_targetX, m_targetY) << ", Bot Distance: " << m_driveTrain->getBotDistance() << std::endl;
+  m_driveTrain->m_drivePID.setSetPoint(getDistance(m_targetX, m_targetY));
+  double v = m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance());
   m_driveTrain->tankDrive(v, v);
 }
 
@@ -32,7 +31,7 @@ void DriveToPoint::End(bool interrupted) {
 }
 
 // Returns true when the command should end.
-bool DriveToPoint::IsFinished() { return m_driveTrain->m_drivePID.calculate(m_driveTrain->m_botDistance) < 0.05; }
+bool DriveToPoint::IsFinished() { return std::abs(m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance())) < 0.3; }
 
 double DriveToPoint::getDistance(double x, double y) {
   return std::sqrt(x*x + y*y);

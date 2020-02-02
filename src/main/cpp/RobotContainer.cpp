@@ -23,3 +23,11 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
   return &m_auto;
 }
+
+void RobotContainer::Reset() {
+  m_driveTrain.resetEncoders();
+}
+
+void RobotContainer::UpdateDriveTrain() {
+  m_driveTrain.updateOdometry();
+}

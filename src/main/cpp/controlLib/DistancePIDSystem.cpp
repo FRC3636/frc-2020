@@ -31,8 +31,8 @@ void DistancePIDSystem::setDmapParams() {
 }
 
 double DistancePIDSystem::getDistance(double time) {
-    std::cout << "D: " << D << " D1: " << D1 << " D2: " << D2 << " VT2: " << VT2 << std::endl;
-    std::cout << "T1: " << T1 << " T2: " << T2 << " T3: " << T3 << std::endl;
+    //std::cout << "D: " << D << " D1: " << D1 << " D2: " << D2 << " VT2: " << VT2 << std::endl;
+    //std::cout << "T1: " << T1 << " T2: " << T2 << " T3: " << T3 << std::endl;
     if (time < T1) {
         return a * (time * time) / 2;
     } else if (time < T2) {

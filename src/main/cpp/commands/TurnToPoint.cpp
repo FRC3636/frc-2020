@@ -14,16 +14,17 @@ TurnToPoint::TurnToPoint(DriveTrain* driveTrain, float x, float y) : m_driveTrai
 
 // Called when the command is initially scheduled.
 void TurnToPoint::Initialize() {
-  std::cout << "started" << std::endl;
+  //std::cout << "started" << std::endl;
   m_driveTrain->arcadeDrive(0, 0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnToPoint::Execute() {
-  double diffX = m_targetX - m_driveTrain->m_botX;
-  double diffY = m_targetY - m_driveTrain->m_botY;
-  m_driveTrain->m_turnPID.setSetPoint(getAngle(diffX, diffY));
-  double v = m_driveTrain->m_turnPID.calculate(m_driveTrain->m_botDirection);
+  m_driveTrain->updateOdometry();
+  std::cout << "Goal Angle: " << getAngle(m_targetX, m_targetY) << ", Bot Angle: " << m_driveTrain->getBotDirection() << std::endl;
+  m_driveTrain->m_turnPID.setSetPoint(getAngle(m_targetX, m_targetY));
+  double v = m_driveTrain->m_turnPID.calculate(m_driveTrain->getBotDirection());
+  std::cout << "v: " << v << std::endl;
   m_driveTrain->tankDrive(-v, v);
 }
 
@@ -34,7 +35,7 @@ void TurnToPoint::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool TurnToPoint::IsFinished() { 
-  return std::abs(m_driveTrain->m_turnPID.calculate(m_driveTrain->m_botDirection)) < 0.05;
+  return std::abs(m_driveTrain->m_turnPID.calculate(m_driveTrain->getBotDirection())) < 0.3;
 }
 
 double TurnToPoint::getAngle(double x, double y) {
@@ -44,11 +45,18 @@ double TurnToPoint::getAngle(double x, double y) {
   } else {
     angle = std::atan(x / y);
   }
-  if(y < 0 && x >= 0){
+  /*if(y < 0 && x >= 0){
     angle += M_PI;
   } else if(y < 0 && x < 0){
     angle += M_PI;
     angle = -angle;
+  }*/
+  
+  while(angle >= M_PI) {
+    angle -= 2.0*M_PI;
+  }
+  while(angle <= -M_PI) {
+    angle += 2.0*M_PI;
   }
   return angle;
 }

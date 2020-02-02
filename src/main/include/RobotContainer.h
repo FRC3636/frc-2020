@@ -20,6 +20,10 @@ class RobotContainer {
 
   frc2::Command* GetAutonomousCommand();
 
+  void Reset();
+
+  void UpdateDriveTrain();
+
  private:
   // input
   frc::Joystick m_leftJoystick{constant::LEFT_JOYSTICK_PORT};
