@@ -31,7 +31,7 @@ void DriveToPoint::End(bool interrupted) {
 }
 
 // Returns true when the command should end.
-bool DriveToPoint::IsFinished() { return std::abs(m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance())) < 0.3; }
+bool DriveToPoint::IsFinished() { return std::abs(m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance())) < 0.05; }
 
 double DriveToPoint::getDistance(double x, double y) {
   return std::sqrt(x*x + y*y);

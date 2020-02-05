@@ -27,7 +27,3 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
 void RobotContainer::Reset() {
   m_driveTrain.resetEncoders();
 }
-
-void RobotContainer::UpdateDriveTrain() {
-  m_driveTrain.updateOdometry();
-}

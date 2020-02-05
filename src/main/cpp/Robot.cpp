@@ -1,22 +1,17 @@
 #include "Robot.h"
 
-void Robot::RobotInit() {
-  m_container.Reset();
-}
+void Robot::RobotInit() {}
 
 void Robot::RobotPeriodic() {}
 
-void Robot::DisabledInit() {
-  m_container.Reset();
-}
+void Robot::DisabledInit() {}
 
 void Robot::DisabledPeriodic() {
-  std::cout << "disabled" << std::endl;
   m_container.Reset();
-  m_container.UpdateDriveTrain();
 }
 
 void Robot::AutonomousInit() {
+  m_container.Reset();
   m_autonomousCommand = m_container.GetAutonomousCommand();
 
   if (m_autonomousCommand != nullptr) {

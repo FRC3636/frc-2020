@@ -19,10 +19,10 @@ namespace constant {
     static constexpr int ELEVATOR_MOTOR_PORT = 2;
 
     //DIO
-    static constexpr int LEFT_ENCODER_PORT_1 = 0;
-    static constexpr int LEFT_ENCODER_PORT_2 = 1;
-    static constexpr int RIGHT_ENCODER_PORT_1 = 2;
-    static constexpr int RIGHT_ENCODER_PORT_2 = 3;
+    static constexpr int LEFT_ENCODER_PORT_1 = 2;
+    static constexpr int LEFT_ENCODER_PORT_2 = 3;
+    static constexpr int RIGHT_ENCODER_PORT_1 = 4;
+    static constexpr int RIGHT_ENCODER_PORT_2 = 5;
 
     //input
     static constexpr int LEFT_JOYSTICK_PORT = 0;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/VictorSP.h>
+#include <frc/Spark.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/Encoder.h>
 #include "Constants.h"
@@ -33,8 +33,8 @@ class DriveTrain : public frc2::SubsystemBase {
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::VictorSP m_leftMotor{constant::LEFT_MOTOR_PORT};
-  frc::VictorSP m_rightMotor{constant::RIGHT_MOTOR_PORT};
+  frc::Spark m_leftMotor{constant::LEFT_MOTOR_PORT};
+  frc::Spark m_rightMotor{constant::RIGHT_MOTOR_PORT};
   frc::DifferentialDrive m_myRobot{m_leftMotor, m_rightMotor};
 
   frc::Encoder m_leftEncoder{constant::LEFT_ENCODER_PORT_1, constant::LEFT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
