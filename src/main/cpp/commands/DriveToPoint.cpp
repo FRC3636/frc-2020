@@ -14,12 +14,13 @@ DriveToPoint::DriveToPoint(DriveTrain* driveTrain, double x, double y) : m_drive
 
 // Called when the command is initially scheduled.
 void DriveToPoint::Initialize() {
+  m_targetX -= m_driveTrain->getX();
+  m_targetY -= m_driveTrain->getY();
   m_driveTrain->arcadeDrive(0, 0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToPoint::Execute() {
-  std::cout << "Goal Distance: " << getDistance(m_targetX, m_targetY) << ", Bot Distance: " << m_driveTrain->getBotDistance() << std::endl;
   m_driveTrain->m_drivePID.setSetPoint(getDistance(m_targetX, m_targetY));
   double v = m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance());
   m_driveTrain->tankDrive(v, v);
@@ -28,6 +29,7 @@ void DriveToPoint::Execute() {
 // Called once the command ends or is interrupted.
 void DriveToPoint::End(bool interrupted) {
   m_driveTrain->arcadeDrive(0, 0);
+  m_driveTrain->resetDistance();
 }
 
 // Returns true when the command should end.

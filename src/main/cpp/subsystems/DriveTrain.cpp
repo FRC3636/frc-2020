@@ -26,9 +26,7 @@ void DriveTrain::updateOdometry() {
   m_botY += dY;
 
   double dX = dAV * std::sin(m_botDirection);
-  m_botX -= dX;
-
-  std::cout << "Distance: " << m_botDistance << ", Direction: " << m_botDirection << std::endl;
+  m_botX += dX;
 
   m_oldTR = -m_rightEncoder.Get();
   m_oldTL = m_leftEncoder.Get();
@@ -68,4 +66,16 @@ double DriveTrain::getBotDirection() {
 
 double DriveTrain::getBotDistance() {
   return m_botDistance;
+}
+
+double DriveTrain::getX() {
+  return m_botX;
+}
+
+double DriveTrain::getY() {
+  return m_botY;
+}
+
+void DriveTrain::resetDistance() {
+  m_botDistance = 0;
 }

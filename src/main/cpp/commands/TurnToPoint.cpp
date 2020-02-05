@@ -14,16 +14,15 @@ TurnToPoint::TurnToPoint(DriveTrain* driveTrain, float x, float y) : m_driveTrai
 
 // Called when the command is initially scheduled.
 void TurnToPoint::Initialize() {
-  //std::cout << "started" << std::endl;
+  m_targetX -= m_driveTrain->getX();
+  m_targetY -= m_driveTrain->getY();
   m_driveTrain->arcadeDrive(0, 0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnToPoint::Execute() {
-  std::cout << "Goal Angle: " << getAngle(m_targetX, m_targetY) << ", Bot Angle: " << m_driveTrain->getBotDirection() << std::endl;
   m_driveTrain->m_turnPID.setSetPoint(getAngle(m_targetX, m_targetY));
   double v = m_driveTrain->m_turnPID.calculate(m_driveTrain->getBotDirection());
-  //std::cout << "v: " << v << std::endl;
   m_driveTrain->tankDrive(v, -v);
 }
 

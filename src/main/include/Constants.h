@@ -5,7 +5,7 @@
 #include <frc/util/Color.h>
 
 namespace constant {
-    static constexpr std::array<std::pair<float, float>, 1> LIST_OF_POINTS {std::make_pair<float, float>(42*2.54, 205*2.54)};
+    static constexpr std::array<std::pair<float, float>, 4> LIST_OF_POINTS {std::make_pair<float, float>(42*2.54, 205*2.54), std::make_pair<float, float>(42*2.54,0), std::make_pair<float, float>(0, 205*2.54), std::make_pair<float, float>(0,0)};
 
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;

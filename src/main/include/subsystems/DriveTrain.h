@@ -26,6 +26,10 @@ class DriveTrain : public frc2::SubsystemBase {
 
   double getBotDirection();
   double getBotDistance();
+  double getX();
+  double getY();
+
+  void resetDistance();
 
   SynchronousPID m_turnPID{0.15, 15, 0.0015, 0, 0, -0.6, 0.6};
   SynchronousPID m_drivePID{0.085/88, 0.024, 0.38/6.0, 0, 0, -0.6, 0.6};
