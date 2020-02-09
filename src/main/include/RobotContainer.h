@@ -4,15 +4,18 @@
 #include <frc2/command/button/JoystickButton.h>
 #include <frc/Joystick.h>
 #include <frc/XboxController.h>
+#include <frc/smartdashboard/SendableChooser.h>
 
 #include "Constants.h"
 #include "commands/DriveWithJoysticks.h"
 #include "commands/Auto.h"
+#include "commands/LeftAuto.h"
 #include "commands/RaiseElevator.h"
 #include "commands/LowerElevator.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/ControlPanelHandler.h"
 #include "subsystems/Climb.h"
+#include "subsystems/NetworkTableHandler.h"
 
 class RobotContainer {
  public:
@@ -35,9 +38,11 @@ class RobotContainer {
   DriveTrain m_driveTrain;
   ControlPanelHandler m_controlPanelHandler;
   Climb m_climb;
+  NetworkTableHandler m_handler;
 
   // commands
   Auto m_auto{&m_driveTrain};
+  LeftAuto m_leftAuto{&m_driveTrain, &m_handler};
 
   void ConfigureButtonBindings();
 };
