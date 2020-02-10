@@ -13,13 +13,14 @@ RaiseElevator::RaiseElevator(Climb* climb) : m_climb{climb} {
 }
 
 // Called when the command is initially scheduled.
-void RaiseElevator::Initialize() {}
-
-// Called repeatedly when this Command is scheduled to run
-void RaiseElevator::Execute() {}
+void RaiseElevator::Initialize() {
+  m_climb->setMotor(constant::RAISE_ELEVATOR_VALUE);
+}
 
 // Called once the command ends or is interrupted.
-void RaiseElevator::End(bool interrupted) {}
+void RaiseElevator::End(bool interrupted) {
+  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+}
 
 // Returns true when the command should end.
-bool RaiseElevator::IsFinished() { return false; }
+bool RaiseElevator::IsFinished() { return m_climb->getUpperLimitSwitch(); }

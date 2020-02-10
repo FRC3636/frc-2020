@@ -9,6 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Spark.h>
+#include <frc/DigitalInput.h>
 
 #include "Constants.h"
 
@@ -19,10 +20,14 @@ class Climb : public frc2::SubsystemBase {
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void Periodic();
+  void setMotor(double speed);
+  bool getLowerLimitSwitch();
+  bool getUpperLimitSwitch();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   frc::Spark m_elevatorMotor{constant::ELEVATOR_MOTOR_PORT};
+  frc::DigitalInput m_lowerLimitSwitch{constant::LOWER_LIMIT_SWITCH_PORT};
+  frc::DigitalInput m_upperLimitSwitch{constant::UPPER_LIMIT_SWITCH_PORT};
 };

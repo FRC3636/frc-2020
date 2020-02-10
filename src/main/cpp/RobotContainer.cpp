@@ -1,6 +1,11 @@
 #include "RobotContainer.h"
 
 RobotContainer::RobotContainer() {
+  // Set up auto
+  m_chooser.AddOption("Auto", &m_auto);
+  m_chooser.AddOption("Left Auto", &m_leftAuto);
+
+  frc::Shuffleboard::GetTab("Autonomous").Add(m_chooser);
   // Initialize all of your commands and subsystems here
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
@@ -21,7 +26,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
-  return &m_leftAuto;
+  return m_chooser.GetSelected();
 }
 
 void RobotContainer::Reset() {

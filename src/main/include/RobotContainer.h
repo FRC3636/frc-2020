@@ -5,6 +5,7 @@
 #include <frc/Joystick.h>
 #include <frc/XboxController.h>
 #include <frc/smartdashboard/SendableChooser.h>
+#include <frc/shuffleboard/Shuffleboard.h>
 
 #include "Constants.h"
 #include "commands/DriveWithJoysticks.h"
@@ -43,6 +44,8 @@ class RobotContainer {
   // commands
   Auto m_auto{&m_driveTrain};
   LeftAuto m_leftAuto{&m_driveTrain, &m_handler};
+
+  frc::SendableChooser<frc2::Command*> m_chooser;
 
   void ConfigureButtonBindings();
 };

@@ -13,13 +13,14 @@ LowerElevator::LowerElevator(Climb* climb) : m_climb{climb} {
 }
 
 // Called when the command is initially scheduled.
-void LowerElevator::Initialize() {}
-
-// Called repeatedly when this Command is scheduled to run
-void LowerElevator::Execute() {}
+void LowerElevator::Initialize() {
+  m_climb->setMotor(constant::LOWER_ELEVATOR_VALUE);
+}
 
 // Called once the command ends or is interrupted.
-void LowerElevator::End(bool interrupted) {}
+void LowerElevator::End(bool interrupted) {
+  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+}
 
 // Returns true when the command should end.
-bool LowerElevator::IsFinished() { return false; }
+bool LowerElevator::IsFinished() { return m_climb->getLowerLimitSwitch(); }

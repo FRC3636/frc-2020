@@ -9,6 +9,9 @@ namespace constant {
 
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
+    static constexpr double RAISE_ELEVATOR_VALUE = 1;
+    static constexpr double LOWER_ELEVATOR_VALUE = -1;
+    static constexpr double KEEP_ELEVATOR_LEVEL_VALUE = 0;
 
     //I2CPort
     static constexpr auto I2C_PORT = frc::I2C::Port::kOnboard;
@@ -17,8 +20,11 @@ namespace constant {
     static constexpr int LEFT_MOTOR_PORT = 0;
     static constexpr int RIGHT_MOTOR_PORT = 1;
     static constexpr int ELEVATOR_MOTOR_PORT = 2;
+    static constexpr int ELEVATOR_BRAKE_PORT = 3;
 
     //DIO
+    static constexpr int LOWER_LIMIT_SWITCH_PORT = 0;
+    static constexpr int UPPER_LIMIT_SWITCH_PORT = 1;
     static constexpr int LEFT_ENCODER_PORT_1 = 2;
     static constexpr int LEFT_ENCODER_PORT_2 = 3;
     static constexpr int RIGHT_ENCODER_PORT_1 = 4;

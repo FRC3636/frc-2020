@@ -9,5 +9,14 @@
 
 Climb::Climb() {}
 
-// This method will be called once per scheduler run
-void Climb::Periodic() {}
+void Climb::setMotor(double speed) {
+    m_elevatorMotor.Set(speed);
+}
+
+bool Climb::getLowerLimitSwitch() {
+    return m_lowerLimitSwitch.Get();
+}
+
+bool Climb::getUpperLimitSwitch() {
+    return m_upperLimitSwitch.Get();
+}
