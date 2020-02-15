@@ -5,8 +5,8 @@
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/DriveTrain.h"
 #include "subsystems/NetworkTableHandler.h"
-#include "commands/TurnToPoint.h"
-#include "commands/DriveToPoint.h"
+#include "commands/TurnWithCamera.h"
+#include "commands/DriveWithCamera.h"
 #include "Constants.h"
 
 class LeftAuto : public frc2::CommandHelper<frc2::SequentialCommandGroup, LeftAuto> {
