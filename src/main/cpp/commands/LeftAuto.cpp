@@ -9,8 +9,7 @@
 
 LeftAuto::LeftAuto(DriveTrain* driveTrain, NetworkTableHandler* handler) {
   AddCommands(
-    TurnToPoint(driveTrain, handler->getX(), handler->getY()),
-    DriveToPoint(driveTrain, handler->getX(), handler->getY())
+    TurnToLemon(driveTrain, handler)
   );
   
 }

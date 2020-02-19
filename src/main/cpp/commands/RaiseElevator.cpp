@@ -7,14 +7,18 @@
 
 #include "commands/RaiseElevator.h"
 
-RaiseElevator::RaiseElevator(Climb* climb) : m_climb{climb} {
+RaiseElevator::RaiseElevator(Climb* climb, std::function<double()> getZ, std::function<bool()> end) : m_climb{climb}, m_getZ{getZ}, m_shouldEnd{end} {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({climb});
 }
 
 // Called when the command is initially scheduled.
 void RaiseElevator::Initialize() {
-  m_climb->setMotor(constant::RAISE_ELEVATOR_VALUE);
+  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+}
+
+void RaiseElevator::Execute() {
+  m_climb->setMotor(m_getZ());
 }
 
 // Called once the command ends or is interrupted.
@@ -23,4 +27,4 @@ void RaiseElevator::End(bool interrupted) {
 }
 
 // Returns true when the command should end.
-bool RaiseElevator::IsFinished() { return m_climb->getUpperLimitSwitch(); }
+bool RaiseElevator::IsFinished() { return m_shouldEnd(); }

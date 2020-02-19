@@ -7,6 +7,7 @@
 #include "subsystems/NetworkTableHandler.h"
 #include "commands/TurnToPoint.h"
 #include "commands/DriveToPoint.h"
+#include "commands/TurnToLemon.h"
 #include "Constants.h"
 
 class LeftAuto : public frc2::CommandHelper<frc2::SequentialCommandGroup, LeftAuto> {

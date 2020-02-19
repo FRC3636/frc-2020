@@ -22,9 +22,11 @@
 class RaiseElevator
     : public frc2::CommandHelper<frc2::CommandBase, RaiseElevator> {
  public:
-  RaiseElevator(Climb* climb);
+  RaiseElevator(Climb* climb, std::function<double()> zAxisRaw, std::function<bool()> end);
 
   void Initialize() override;
+
+  void Execute() override;
 
   void End(bool interrupted) override;
 
@@ -32,4 +34,6 @@ class RaiseElevator
 
  private:
   Climb* m_climb;
+  std::function<double()> m_getZ;
+  std::function<bool()> m_shouldEnd;
 };

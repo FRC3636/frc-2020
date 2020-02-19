@@ -13,6 +13,7 @@
 #include "commands/LeftAuto.h"
 #include "commands/RaiseElevator.h"
 #include "commands/LowerElevator.h"
+#include "commands/SetBrake.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/ControlPanelHandler.h"
 #include "subsystems/Climb.h"
@@ -34,6 +35,7 @@ class RobotContainer {
 
   frc2::JoystickButton m_raiseElevatorButton{&m_leftJoystick, 3};
   frc2::JoystickButton m_lowerElevatorButton{&m_rightJoystick, 3};
+  frc2::JoystickButton m_brakeButton{&m_rightJoystick, 9};
 
   // subsytems
   DriveTrain m_driveTrain;

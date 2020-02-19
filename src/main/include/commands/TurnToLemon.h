@@ -9,8 +9,8 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-
-#include <subsystems/Climb.h>
+#include <subsystems/DriveTrain.h>
+#include <subsystems/NetworkTableHandler.h>
 
 /**
  * An example command.
@@ -19,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class LowerElevator
-    : public frc2::CommandHelper<frc2::CommandBase, LowerElevator> {
+class TurnToLemon
+    : public frc2::CommandHelper<frc2::CommandBase, TurnToLemon> {
  public:
-  LowerElevator(Climb* climb, std::function<double()> getZ, std::function<bool()> end);
+  TurnToLemon(DriveTrain* driveTrain, NetworkTableHandler* handler);
 
   void Initialize() override;
 
@@ -31,8 +31,7 @@ class LowerElevator
   void End(bool interrupted) override;
 
   bool IsFinished() override;
- private:
-  Climb* m_climb;
-  std::function<double()> m_getZ;
-  std::function<bool()> m_shouldEnd;
+private:
+  DriveTrain* m_driveTrain;
+  NetworkTableHandler* m_handler;
 };

@@ -13,6 +13,10 @@ void Climb::setMotor(double speed) {
     m_elevatorMotor.Set(speed);
 }
 
+void Climb::setBrakeMotor(double speed) {
+    m_brakeMotor.Set(speed);
+}
+
 bool Climb::getLowerLimitSwitch() {
     return m_lowerLimitSwitch.Get();
 }
