@@ -21,7 +21,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   m_raiseElevatorButton.WhenPressed(RaiseElevator(
     &m_climb,
-    [this] { return (m_leftJoystick.GetZ() + 1) / 2.0; },
+    [this] { return -(m_leftJoystick.GetZ() - 1) / 2.0; },
     [this] { return m_leftJoystick.GetRawButton(8); }
   ));
 
@@ -32,8 +32,7 @@ void RobotContainer::ConfigureButtonBindings() {
   ));
 
   m_brakeButton.WhenPressed(SetBrake(
-    &m_climb,
-    [this] { return m_rightJoystick.GetRawButton(10); }
+    &m_climb
   ));
 }
 
