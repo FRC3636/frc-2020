@@ -7,6 +7,12 @@
 namespace constant {
     static constexpr std::array<std::pair<float, float>, 4> LIST_OF_POINTS {std::make_pair<float, float>(42*2.54, 205*2.54), std::make_pair<float, float>(42*2.54,0), std::make_pair<float, float>(0, 205*2.54), std::make_pair<float, float>(0,0)};
 
+    //ODOMETRY
+    static constexpr double STARTING_BOT_X = 0;
+    static constexpr double STARTING_BOT_Y = 0;
+    static constexpr double STARTING_BOT_THETA = 0;
+    static constexpr double STARTING_BOT_DISTANCE = 0;
+
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
     static constexpr double RAISE_ELEVATOR_VALUE = 1;
