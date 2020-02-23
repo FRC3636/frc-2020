@@ -19,11 +19,3 @@ void Shooter::setShooter(bool shooting) {
         m_rightShooterMotor.Set(0);
     }
 }
-
-void Shooter::setLowerShooter(bool move) {
-    if(move) {
-        m_lowerShooterMotor.Set(1);
-    } else {
-        m_lowerShooterMotor.Set(0);
-    }
-}

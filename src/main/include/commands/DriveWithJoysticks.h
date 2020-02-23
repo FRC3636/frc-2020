@@ -8,7 +8,7 @@
 
 class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoysticks> {
  public:
-  explicit DriveWithJoysticks(DriveTrain* driveTrain, Intake* intake, std::function<double()> forward, std::function<double()> turn, std::function<bool()> shouldIntake);
+  explicit DriveWithJoysticks(DriveTrain* driveTrain, Intake* intake, std::function<double()> forward, std::function<double()> turn, std::function<bool()> shouldIntake, std::function<bool()> shouldMoveBalls);
 
   void Initialize() override;
 
@@ -24,4 +24,5 @@ class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWi
   std::function<double()> m_forward;
   std::function<double()> m_turn;
   std::function<bool()> m_shouldIntake;
+  std::function<bool()> m_shouldMoveBalls;
 };

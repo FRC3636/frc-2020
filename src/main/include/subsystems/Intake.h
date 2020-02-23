@@ -20,9 +20,11 @@ class Intake : public frc2::SubsystemBase {
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void setIntake(bool intaking);
+  void setLowerShooter(bool move);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::Victor m_intakeMotor{constant::INTAKE_MOTOR_PORT};
+  frc::VictorSP m_intakeMotor{constant::INTAKE_MOTOR_PORT};
+  frc::VictorSP m_lowerShooterMotor{constant::SHOOTER_BASE_MOTOR_PORT};
 };

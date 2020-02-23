@@ -12,7 +12,8 @@ RobotContainer::RobotContainer() {
     &m_intake,
     [this] { return -m_leftJoystick.GetY(); },
     [this] { return m_rightJoystick.GetX(); },
-    [this] { return m_leftJoystick.GetTrigger(); }
+    [this] { return m_controller.GetRawButton((int)frc::XboxController::Button::kBumperLeft); },
+    [this] { return m_rightJoystick.GetTrigger(); }
   ));
 
   // Configure the button bindings
@@ -23,14 +24,8 @@ void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   m_raiseElevatorButton.WhenPressed(RaiseElevator(
     &m_climb,
-    [this] { return -(m_leftJoystick.GetZ() - 1) / 2.0; },
-    [this] { return m_leftJoystick.GetRawButton(8); }
-  ));
-
-  m_lowerElevatorButton.WhenPressed(LowerElevator(
-    &m_climb,
-    [this] { return (m_rightJoystick.GetZ() - 1) / 2.0; },
-    [this] { return m_rightJoystick.GetRawButton(8); }
+    [this] { return m_controller.GetY(frc::GenericHID::kRightHand); },
+    [this] { return m_controller.GetRawButton((int)frc::XboxController::Button::kB); }
   ));
 
   m_brakeButton.WhenPressed(SetBrake(
@@ -39,8 +34,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
   m_shooterButton.WhenPressed(ShootBalls(
     &m_shooter,
-    [this] { return m_rightJoystick.GetRawButton(3); },
-    [this] { return m_rightJoystick.GetTriggerReleased(); }
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kBumperRight); }
   ));
 }
 

@@ -36,10 +36,9 @@ class RobotContainer {
   frc::Joystick m_rightJoystick{constant::RIGHT_JOYSTICK_PORT};
   frc::XboxController m_controller{constant::CONTROLLER_PORT};
 
-  frc2::JoystickButton m_raiseElevatorButton{&m_leftJoystick, 8};
-  frc2::JoystickButton m_lowerElevatorButton{&m_rightJoystick, 8};
-  frc2::JoystickButton m_brakeButton{&m_rightJoystick, 9};
-  frc2::JoystickButton m_shooterButton{&m_rightJoystick, frc::Joystick::kTriggerButton};
+  frc2::JoystickButton m_raiseElevatorButton{&m_controller, (int)frc::XboxController::Button::kStickRight};
+  frc2::JoystickButton m_brakeButton{&m_controller, (int)frc::XboxController::Button::kStart};
+  frc2::JoystickButton m_shooterButton{&m_controller, (int)frc::XboxController::Button::kBumperRight};
 
   // subsytems
   DriveTrain m_driveTrain;
