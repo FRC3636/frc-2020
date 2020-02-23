@@ -42,8 +42,8 @@ class DriveTrain : public frc2::SubsystemBase {
   frc::Spark m_rightMotor{constant::RIGHT_MOTOR_PORT};
   frc::DifferentialDrive m_myRobot{m_leftMotor, m_rightMotor};
 
-  frc::Encoder m_leftEncoder{constant::LEFT_ENCODER_PORT_1, constant::LEFT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
-  frc::Encoder m_rightEncoder{constant::RIGHT_ENCODER_PORT_1, constant::RIGHT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
+  frc::Encoder m_leftEncoder{steveConstants::LEFT_ENCODER_PORT_1, steveConstants::LEFT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
+  frc::Encoder m_rightEncoder{steveConstants::RIGHT_ENCODER_PORT_1, steveConstants::RIGHT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
 
   double m_oldTR = 0.0;
   double m_oldTL = 0.0;

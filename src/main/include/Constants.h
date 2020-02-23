@@ -47,3 +47,13 @@ namespace constant {
     static constexpr frc::Color RED = frc::Color(0.561, 0.232, 0.114);
     static constexpr frc::Color YELLOW = frc::Color(0.361, 0.524, 0.113);
 }
+
+namespace steveConstants {
+
+    //DIO
+    static constexpr int LEFT_ENCODER_PORT_1 = 4;
+    static constexpr int LEFT_ENCODER_PORT_2 = 5;
+    static constexpr int RIGHT_ENCODER_PORT_1 = 2;
+    static constexpr int RIGHT_ENCODER_PORT_2 = 3;
+
+}
