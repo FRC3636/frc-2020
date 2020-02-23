@@ -7,18 +7,26 @@
 
 #include "commands/ShootBalls.h"
 
-ShootBalls::ShootBalls() {
+ShootBalls::ShootBalls(Shooter* shooter, std::function<bool()> moveBalls, std::function<bool()> end) : m_shooter{shooter}, m_moveBalls{moveBalls}, m_end{end} {
   // Use addRequirements() here to declare subsystem dependencies.
+  AddRequirements({m_shooter});
 }
 
 // Called when the command is initially scheduled.
-void ShootBalls::Initialize() {}
+void ShootBalls::Initialize() {
+  m_shooter->setShooter(true);
+  m_shooter->setLowerShooter(false);
+}
 
-// Called repeatedly when this Command is scheduled to run
-void ShootBalls::Execute() {}
+void ShootBalls::Execute() {
+  m_shooter->setLowerShooter(m_moveBalls());
+}
 
 // Called once the command ends or is interrupted.
-void ShootBalls::End(bool interrupted) {}
+void ShootBalls::End(bool interrupted) {
+  m_shooter->setShooter(false);
+  m_shooter->setLowerShooter(false);
+}
 
 // Returns true when the command should end.
-bool ShootBalls::IsFinished() { return false; }
+bool ShootBalls::IsFinished() { return m_end(); }

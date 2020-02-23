@@ -27,6 +27,10 @@ namespace constant {
     static constexpr int RIGHT_MOTOR_PORT = 1;
     static constexpr int ELEVATOR_MOTOR_PORT = 2;
     static constexpr int ELEVATOR_BRAKE_PORT = 3;
+    static constexpr int INTAKE_MOTOR_PORT = 4;
+    static constexpr int SHOOTER_BASE_MOTOR_PORT = 5;
+    static constexpr int LEFT_SHOOTER_MOTOR_PORT = 6;
+    static constexpr int RIGHT_SHOOTER_MOTOR_PORT = 7;
 
     //DIO
     static constexpr int LOWER_LIMIT_SWITCH_PORT = 0;

@@ -9,6 +9,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
+#include "subsystems/Shooter.h"
 
 /**
  * An example command.
@@ -20,7 +21,7 @@
 class ShootBalls
     : public frc2::CommandHelper<frc2::CommandBase, ShootBalls> {
  public:
-  ShootBalls();
+  ShootBalls(Shooter* shooter, std::function<bool()> moveBalls, std::function<bool()> end);
 
   void Initialize() override;
 
@@ -29,4 +30,8 @@ class ShootBalls
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+private:
+  Shooter* m_shooter;
+  std::function<bool()> m_moveBalls;
+  std::function<bool()> m_end;
 };

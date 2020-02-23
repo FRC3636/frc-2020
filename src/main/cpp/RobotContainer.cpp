@@ -9,8 +9,10 @@ RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
+    &m_intake,
     [this] { return -m_leftJoystick.GetY(); },
-    [this] { return m_rightJoystick.GetX(); }
+    [this] { return m_rightJoystick.GetX(); },
+    [this] { return m_leftJoystick.GetTrigger(); }
   ));
 
   // Configure the button bindings
@@ -33,6 +35,12 @@ void RobotContainer::ConfigureButtonBindings() {
 
   m_brakeButton.WhenPressed(SetBrake(
     &m_climb
+  ));
+
+  m_shooterButton.WhenPressed(ShootBalls(
+    &m_shooter,
+    [this] { return m_rightJoystick.GetRawButton(3); },
+    [this] { return m_rightJoystick.GetTriggerReleased(); }
   ));
 }
 

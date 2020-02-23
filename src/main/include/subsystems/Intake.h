@@ -8,6 +8,9 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include <frc/VictorSP.h>
+#include <frc/Victor.h>
+#include "Constants.h"
 
 class Intake : public frc2::SubsystemBase {
  public:
@@ -16,9 +19,10 @@ class Intake : public frc2::SubsystemBase {
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void Periodic();
+  void setIntake(bool intaking);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
+  frc::Victor m_intakeMotor{constant::INTAKE_MOTOR_PORT};
 };
