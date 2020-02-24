@@ -38,6 +38,7 @@ class RobotContainer {
 
   frc2::JoystickButton m_raiseElevatorButton{&m_controller, (int)frc::XboxController::Button::kStickRight};
   frc2::JoystickButton m_brakeButton{&m_controller, (int)frc::XboxController::Button::kStart};
+  frc2::JoystickButton m_brakeOffButton{&m_controller, (int)frc::XboxController::Button::kBack};
   frc2::JoystickButton m_shooterButton{&m_controller, (int)frc::XboxController::Button::kBumperRight};
 
   // subsytems
@@ -55,4 +56,5 @@ class RobotContainer {
   frc::SendableChooser<frc2::Command*> m_chooser;
 
   void ConfigureButtonBindings();
+  double getIntake();
 };

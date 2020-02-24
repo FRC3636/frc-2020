@@ -7,14 +7,18 @@
 
 #include "commands/SetBrake.h"
 
-SetBrake::SetBrake(Climb* climb) : m_climb{climb} {
+SetBrake::SetBrake(Climb* climb, bool on) : m_climb{climb}, m_on{on} {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({m_climb});
 }
 
 // Called when the command is initially scheduled.
 void SetBrake::Initialize() {
-  m_climb->setBrakeMotor(0.5);
+  if(m_on) {
+    m_climb->setBrakeMotor(0.5);
+  } else {
+    m_climb->setBrakeMotor(-0.5);
+  }
   m_startTime = std::chrono::system_clock::now();
 }
 

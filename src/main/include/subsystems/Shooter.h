@@ -20,7 +20,7 @@ class Shooter : public frc2::SubsystemBase {
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void setShooter(bool shooting);
+  void setShooter(double power);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be

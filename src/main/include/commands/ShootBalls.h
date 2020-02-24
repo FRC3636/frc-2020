@@ -21,14 +21,17 @@
 class ShootBalls
     : public frc2::CommandHelper<frc2::CommandBase, ShootBalls> {
  public:
-  ShootBalls(Shooter* shooter, std::function<bool()> end);
+  ShootBalls(Shooter* shooter, std::function<double()> power, std::function<bool()> end);
 
   void Initialize() override;
+
+  void Execute() override;
 
   void End(bool interrupted) override;
 
   bool IsFinished() override;
 private:
   Shooter* m_shooter;
+  std::function<double()> m_power;
   std::function<bool()> m_end;
 };

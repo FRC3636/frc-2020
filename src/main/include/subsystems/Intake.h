@@ -19,7 +19,7 @@ class Intake : public frc2::SubsystemBase {
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void setIntake(bool intaking);
+  void setIntake(double intaking);
   void setLowerShooter(bool move);
 
  private:

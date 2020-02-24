@@ -10,9 +10,9 @@ RobotContainer::RobotContainer() {
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
     &m_intake,
-    [this] { return -m_leftJoystick.GetY(); },
+    [this] { return m_leftJoystick.GetY(); },
     [this] { return m_rightJoystick.GetX(); },
-    [this] { return m_controller.GetRawButton((int)frc::XboxController::Button::kBumperLeft); },
+    [this] { return getIntake(); },
     [this] { return m_rightJoystick.GetTrigger(); }
   ));
 
@@ -29,11 +29,18 @@ void RobotContainer::ConfigureButtonBindings() {
   ));
 
   m_brakeButton.WhenPressed(SetBrake(
-    &m_climb
+    &m_climb,
+    true
+  ));
+
+  m_brakeOffButton.WhenPressed(SetBrake(
+    &m_climb,
+    false
   ));
 
   m_shooterButton.WhenPressed(ShootBalls(
     &m_shooter,
+    [this] { return -(m_leftJoystick.GetZ() - 1) / 2.0; },
     [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kBumperRight); }
   ));
 }
@@ -45,4 +52,14 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
 
 void RobotContainer::Reset() {
   m_driveTrain.resetEncoders();
+}
+
+double RobotContainer::getIntake() {
+  if(m_controller.GetRawButton((int)frc::XboxController::Button::kBumperLeft)) {
+    return 1;
+  } else if(m_controller.GetRawButton((int)frc::XboxController::Button::kY)) {
+    return -1;
+  } else {
+    return 0;
+  }
 }

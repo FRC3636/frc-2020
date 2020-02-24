@@ -10,12 +10,8 @@
 Intake::Intake() {}
 
 // This method will be called once per scheduler run
-void Intake::setIntake(bool intaking) {
-    if(intaking) {
-        m_intakeMotor.Set(-1);
-    } else {
-        m_intakeMotor.Set(0);
-    }
+void Intake::setIntake(double intaking) {
+    m_intakeMotor.Set(intaking);
 }
 
 void Intake::setLowerShooter(bool move) {

@@ -10,12 +10,7 @@
 Shooter::Shooter() {}
 
 // This method will be called once per scheduler run
-void Shooter::setShooter(bool shooting) {
-    if(shooting) {
-        m_leftShooterMotor.Set(1);
-        m_rightShooterMotor.Set(-1);
-    } else {
-        m_leftShooterMotor.Set(0);
-        m_rightShooterMotor.Set(0);
-    }
+void Shooter::setShooter(double power) {
+    m_leftShooterMotor.Set(power);
+    m_rightShooterMotor.Set(-power);
 }
