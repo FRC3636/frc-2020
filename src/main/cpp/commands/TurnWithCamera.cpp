@@ -12,6 +12,9 @@ void TurnWithCamera::Initialize() {
 
 void TurnWithCamera::Execute() {
   std::cout << "recieved angle: " << m_network->getAngle() << std::endl;
+  if(m_network->getAngle() > 0) {
+    std::cout << "over 0" << std::endl;
+  }
   double v = m_driveTrain->m_turnPID.calculate(m_network->getAngle());
   m_driveTrain->tankDrive(v, -v);
 }

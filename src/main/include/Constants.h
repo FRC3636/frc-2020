@@ -25,7 +25,7 @@ namespace constant {
     //PWM
     static constexpr int LEFT_MOTOR_PORT = 0;
     static constexpr int RIGHT_MOTOR_PORT = 1;
-    static constexpr int ELEVATOR_MOTOR_PORT = 2;
+    static constexpr int ELEVATOR_MOTOR_PORT = 8;
     static constexpr int ELEVATOR_BRAKE_PORT = 3;
     static constexpr int INTAKE_MOTOR_PORT = 4;
     static constexpr int SHOOTER_BASE_MOTOR_PORT = 5;

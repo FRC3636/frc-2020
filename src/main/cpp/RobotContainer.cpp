@@ -40,7 +40,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
   m_shooterButton.WhenPressed(ShootBalls(
     &m_shooter,
-    [this] { return -(m_leftJoystick.GetZ() - 1) / 2.0; },
+    [this] { return -(m_rightJoystick.GetZ() - 3) / 4.0; },
     [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kBumperRight); }
   ));
 }
