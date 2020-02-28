@@ -45,6 +45,24 @@ void RobotContainer::ConfigureButtonBindings() {
     [this] { return -(m_rightJoystick.GetZ() - 3) / 4.0; },
     [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kBumperRight); }
   ));
+
+  m_shooterPresetHigh.WhenPressed(ShootWithPreset(
+    &m_shooter,
+    constant::HIGH_MOTOR_POWER,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kB); }
+  ));
+
+  m_shooterPresetMid.WhenPressed(ShootWithPreset(
+    &m_shooter,
+    constant::MID_MOTOR_POWER,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kA); }
+  ));
+
+  m_shooterPresetLow.WhenPressed(ShootWithPreset(
+    &m_shooter,
+    constant::LOW_MOTOR_POWER,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kX); }
+  ));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

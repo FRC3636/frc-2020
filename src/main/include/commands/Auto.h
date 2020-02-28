@@ -8,6 +8,7 @@
 #include "subsystems/Intake.h"
 #include "commands/TurnToPoint.h"
 #include "commands/DriveToPoint.h"
+#include "commands/ShootInAuto.h"
 #include "Constants.h"
 
 class Auto : public frc2::CommandHelper<frc2::SequentialCommandGroup, Auto> {

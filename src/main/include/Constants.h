@@ -13,6 +13,11 @@ namespace constant {
     static constexpr double STARTING_BOT_THETA = 0;
     static constexpr double STARTING_BOT_DISTANCE = 0;
 
+    //MOTOR POWER
+    static constexpr double HIGH_MOTOR_POWER = 0.95;
+    static constexpr double MID_MOTOR_POWER = 0.75;
+    static constexpr double LOW_MOTOR_POWER = 0.555118; //used for auto
+
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
     static constexpr double RAISE_ELEVATOR_VALUE = 1;
