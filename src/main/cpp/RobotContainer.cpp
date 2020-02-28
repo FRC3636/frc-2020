@@ -30,12 +30,14 @@ void RobotContainer::ConfigureButtonBindings() {
 
   m_brakeButton.WhenPressed(SetBrake(
     &m_climb,
-    true
+    true,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kStart); }
   ));
 
   m_brakeOffButton.WhenPressed(SetBrake(
     &m_climb,
-    false
+    false,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kBack); }
   ));
 
   m_shooterButton.WhenPressed(ShootBalls(

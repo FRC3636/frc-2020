@@ -30,5 +30,5 @@ class DriveWithCamera : public frc2::CommandHelper<frc2::CommandBase, DriveWithC
   DriveTrain* m_driveTrain;
   NetworkTableHandler* m_network;
 
-  static constexpr double BOT_POSITION = 0.0;
+  static constexpr double BOT_POSITION = 200.0;
 };

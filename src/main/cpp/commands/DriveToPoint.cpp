@@ -21,7 +21,8 @@ void DriveToPoint::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToPoint::Execute() {
-  m_driveTrain->m_drivePID.setSetPoint(getDistance(m_targetX, m_targetY));
+  std::cout << "drive" << std::endl;
+  m_driveTrain->m_drivePID.setSetPoint(-getDistance(m_targetX, m_targetY));
   double v = m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance());
   m_driveTrain->tankDrive(v, v);
 }

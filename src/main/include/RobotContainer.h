@@ -50,7 +50,7 @@ class RobotContainer {
   Intake m_intake;
 
   // commands
-  Auto m_auto{&m_driveTrain};
+  Auto m_auto{&m_driveTrain, &m_shooter, &m_intake};
   LeftAuto m_leftAuto{&m_driveTrain, &m_handler};
 
   frc::SendableChooser<frc2::Command*> m_chooser;

@@ -19,6 +19,7 @@ void ShootBalls::Initialize() {
 
 void ShootBalls::Execute() {
   m_shooter->setShooter(m_power());
+  std::cout << m_power() << std::endl;
 }
 
 // Called once the command ends or is interrupted.

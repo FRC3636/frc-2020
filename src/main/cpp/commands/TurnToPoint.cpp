@@ -14,8 +14,10 @@ void TurnToPoint::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TurnToPoint::Execute() {
+  std::cout << "turn" << std::endl;
   m_driveTrain->m_turnPID.setSetPoint(getAngle(m_targetX, m_targetY));
   double v = m_driveTrain->m_turnPID.calculate(m_driveTrain->getBotDirection());
+  std::cout << v << std::endl;
   m_driveTrain->tankDrive(v, -v);
 }
 

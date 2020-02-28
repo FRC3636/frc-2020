@@ -31,8 +31,8 @@ class DriveTrain : public frc2::SubsystemBase {
 
   void resetDistance();
 
-  SynchronousPID m_turnPID{0.15, 15, 0.0015, 0, 0, -0.6, 0.6};
-  SynchronousPID m_drivePID{0.085/88, 0.024, 0.38/6.0, 0, 0, -0.6, 0.6};
+  SynchronousPID m_turnPID{3.5, 0.15, 0.0, 0, 0, -0.8, 0.8};
+  SynchronousPID m_drivePID{0.085/88, 0.024, 1.0/6.0, 0, 0, -0.6, 0.6};
   SynchronousPID m_percentageTurnPID{1, 0, 0, 0, 0, 0.5, -0.5};
 
  private:

@@ -31,6 +31,9 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+  frc::CameraServer::GetInstance()->StartAutomaticCapture();
+  cs::CvSink cvSink = frc::CameraServer::GetInstance()->GetVideo();
+  cs::CvSource outputStream = frc::CameraServer::GetInstance()->PutVideo("Camera", 640, 480);
 }
 
 void Robot::TeleopPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }

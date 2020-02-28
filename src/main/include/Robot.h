@@ -3,6 +3,8 @@
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandScheduler.h>
+#include <cameraserver/CameraServer.h>
+#include <cscore.h>
 
 #include "RobotContainer.h"
 

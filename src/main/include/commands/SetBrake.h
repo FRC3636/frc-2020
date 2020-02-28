@@ -23,7 +23,7 @@
 class SetBrake
     : public frc2::CommandHelper<frc2::CommandBase, SetBrake> {
  public:
-  SetBrake(Climb* climb, bool on);
+  SetBrake(Climb* climb, bool on, std::function<bool()> shouldEnd);
 
   void Initialize() override;
 
@@ -35,6 +35,5 @@ class SetBrake
 private:
   Climb* m_climb;
   bool m_on;
-  std::chrono::system_clock::time_point m_startTime;
-  std::chrono::duration<double> m_duration;
+  std::function<bool()> m_shouldEnd;
 };
