@@ -5,8 +5,8 @@ Auto::Auto(DriveTrain* driveTrain, Shooter* shooter, Intake* intake) {
     //add auto commands here
     //TurnToPoint(driveTrain, 0, -50),
     DriveToPoint(driveTrain, 0, 20),
-    ShootInAuto(intake, shooter)
-    DriveToPoint(driveTrain, 0, 20),
+    ShootInAuto(intake, shooter),
+    DriveToPoint(driveTrain, 0, 20)
     //set power to .555118
   );
 }
