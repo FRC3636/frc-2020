@@ -1,5 +1,4 @@
 #include "commands/LeftAuto.h"
-#include "commands/TurnWithCamera.h"
 
 LeftAuto::LeftAuto(DriveTrain* driveTrain, NetworkTableHandler* handler) {
   AddCommands(

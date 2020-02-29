@@ -6,6 +6,7 @@
 #include <frc/XboxController.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/shuffleboard/Shuffleboard.h>
+#include <iostream>
 
 #include "Constants.h"
 #include "commands/DriveWithJoysticks.h"
@@ -30,6 +31,8 @@ class RobotContainer {
   frc2::Command* GetAutonomousCommand();
 
   void Reset();
+
+  void outputCameraData();
 
  private:
   // input
