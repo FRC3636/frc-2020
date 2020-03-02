@@ -5,26 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/LowerElevator.h"
+#include "commands/SetBrake.h"
 
-LowerElevator::LowerElevator(Climb* climb, std::function<double()> getZ, std::function<bool()> end) : m_climb{climb}, m_getZ{getZ}, m_shouldEnd{end} {
+SetBrake::SetBrake(Climb* climb) : m_climb{climb} {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({climb});
+  AddRequirements({m_climb});
 }
 
 // Called when the command is initially scheduled.
-void LowerElevator::Initialize() {
-  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+void SetBrake::Initialize() {
+  m_climb->setBrakeMotor(0.5);
+  m_startTime = std::chrono::system_clock::now();
 }
 
-void LowerElevator::Execute() {
-  m_climb->setMotor(m_getZ());
+void SetBrake::Execute() {
+  std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
+  m_duration = currentTime - m_startTime;
 }
 
 // Called once the command ends or is interrupted.
-void LowerElevator::End(bool interrupted) {
-  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+void SetBrake::End(bool interrupted) {
+  m_climb->setBrakeMotor(0);
 }
 
 // Returns true when the command should end.
-bool LowerElevator::IsFinished() { return m_shouldEnd(); }
+bool SetBrake::IsFinished() { return m_duration.count() >= 1; }

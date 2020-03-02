@@ -28,5 +28,5 @@ class TurnWithCamera : public frc2::CommandHelper<frc2::CommandBase, TurnWithCam
   DriveTrain* m_driveTrain;
   NetworkTableHandler* m_network;
 
-  static constexpr double MIDDLE_OF_FRAME = 45.0;
+  static constexpr double MIDDLE_OF_FRAME = 0.0;
 };

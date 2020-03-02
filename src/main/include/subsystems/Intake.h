@@ -8,28 +8,21 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/Spark.h>
-#include <frc/DigitalInput.h>
-
+#include <frc/VictorSP.h>
+#include <frc/Victor.h>
 #include "Constants.h"
 
-class Climb : public frc2::SubsystemBase {
+class Intake : public frc2::SubsystemBase {
  public:
-  Climb();
+  Intake();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void setMotor(double speed);
-  void setBrakeMotor(double speed);
-  bool getLowerLimitSwitch();
-  bool getUpperLimitSwitch();
+  void setIntake(bool intaking);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::Spark m_elevatorMotor{constant::ELEVATOR_MOTOR_PORT};
-  frc::Spark m_brakeMotor{constant::ELEVATOR_BRAKE_PORT};
-  frc::DigitalInput m_lowerLimitSwitch{constant::LOWER_LIMIT_SWITCH_PORT};
-  frc::DigitalInput m_upperLimitSwitch{constant::UPPER_LIMIT_SWITCH_PORT};
+  frc::Victor m_intakeMotor{constant::INTAKE_MOTOR_PORT};
 };

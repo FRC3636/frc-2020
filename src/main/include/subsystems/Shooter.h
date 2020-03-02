@@ -8,28 +8,24 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/Spark.h>
-#include <frc/DigitalInput.h>
-
+#include <frc/Victor.h>
+#include <frc/VictorSP.h>
 #include "Constants.h"
 
-class Climb : public frc2::SubsystemBase {
+class Shooter : public frc2::SubsystemBase {
  public:
-  Climb();
+  Shooter();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
-  void setMotor(double speed);
-  void setBrakeMotor(double speed);
-  bool getLowerLimitSwitch();
-  bool getUpperLimitSwitch();
+  void setShooter(bool shooting);
+  void setLowerShooter(bool move);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::Spark m_elevatorMotor{constant::ELEVATOR_MOTOR_PORT};
-  frc::Spark m_brakeMotor{constant::ELEVATOR_BRAKE_PORT};
-  frc::DigitalInput m_lowerLimitSwitch{constant::LOWER_LIMIT_SWITCH_PORT};
-  frc::DigitalInput m_upperLimitSwitch{constant::UPPER_LIMIT_SWITCH_PORT};
+  frc::Victor m_leftShooterMotor{constant::LEFT_SHOOTER_MOTOR_PORT};
+  frc::Victor m_rightShooterMotor{constant::RIGHT_SHOOTER_MOTOR_PORT};
+  frc::Victor m_lowerShooterMotor{constant::SHOOTER_BASE_MOTOR_PORT};
 };

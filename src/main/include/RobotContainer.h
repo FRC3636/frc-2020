@@ -13,10 +13,14 @@
 #include "commands/LeftAuto.h"
 #include "commands/RaiseElevator.h"
 #include "commands/LowerElevator.h"
+#include "commands/SetBrake.h"
+#include "commands/ShootBalls.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/ControlPanelHandler.h"
 #include "subsystems/Climb.h"
 #include "subsystems/NetworkTableHandler.h"
+#include "subsystems/Shooter.h"
+#include "subsystems/Intake.h"
 
 class RobotContainer {
  public:
@@ -32,14 +36,18 @@ class RobotContainer {
   frc::Joystick m_rightJoystick{constant::RIGHT_JOYSTICK_PORT};
   frc::XboxController m_controller{constant::CONTROLLER_PORT};
 
-  frc2::JoystickButton m_raiseElevatorButton{&m_leftJoystick, 3};
-  frc2::JoystickButton m_lowerElevatorButton{&m_rightJoystick, 3};
+  frc2::JoystickButton m_raiseElevatorButton{&m_leftJoystick, 8};
+  frc2::JoystickButton m_lowerElevatorButton{&m_rightJoystick, 8};
+  frc2::JoystickButton m_brakeButton{&m_rightJoystick, 9};
+  frc2::JoystickButton m_shooterButton{&m_rightJoystick, frc::Joystick::kTriggerButton};
 
   // subsytems
   DriveTrain m_driveTrain;
   ControlPanelHandler m_controlPanelHandler;
   Climb m_climb;
   NetworkTableHandler m_handler;
+  Shooter m_shooter;
+  Intake m_intake;
 
   // commands
   Auto m_auto{&m_driveTrain};

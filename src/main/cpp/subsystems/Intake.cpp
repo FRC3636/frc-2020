@@ -5,22 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Climb.h"
+#include "subsystems/Intake.h"
 
-Climb::Climb() {}
+Intake::Intake() {}
 
-void Climb::setMotor(double speed) {
-    m_elevatorMotor.Set(speed);
-}
-
-void Climb::setBrakeMotor(double speed) {
-    m_brakeMotor.Set(speed);
-}
-
-bool Climb::getLowerLimitSwitch() {
-    return m_lowerLimitSwitch.Get();
-}
-
-bool Climb::getUpperLimitSwitch() {
-    return m_upperLimitSwitch.Get();
+// This method will be called once per scheduler run
+void Intake::setIntake(bool intaking) {
+    if(intaking) {
+        m_intakeMotor.Set(1);
+    } else {
+        m_intakeMotor.Set(0);
+    }
 }

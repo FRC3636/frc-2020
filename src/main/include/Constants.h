@@ -27,6 +27,10 @@ namespace constant {
     static constexpr int RIGHT_MOTOR_PORT = 1;
     static constexpr int ELEVATOR_MOTOR_PORT = 2;
     static constexpr int ELEVATOR_BRAKE_PORT = 3;
+    static constexpr int INTAKE_MOTOR_PORT = 4;
+    static constexpr int SHOOTER_BASE_MOTOR_PORT = 5;
+    static constexpr int LEFT_SHOOTER_MOTOR_PORT = 6;
+    static constexpr int RIGHT_SHOOTER_MOTOR_PORT = 7;
 
     //DIO
     static constexpr int LOWER_LIMIT_SWITCH_PORT = 0;
@@ -46,4 +50,14 @@ namespace constant {
     static constexpr frc::Color GREEN = frc::Color(0.197, 0.561, 0.240);
     static constexpr frc::Color RED = frc::Color(0.561, 0.232, 0.114);
     static constexpr frc::Color YELLOW = frc::Color(0.361, 0.524, 0.113);
+}
+
+namespace steveConstants {
+
+    //DIO
+    static constexpr int LEFT_ENCODER_PORT_1 = 4;
+    static constexpr int LEFT_ENCODER_PORT_2 = 5;
+    static constexpr int RIGHT_ENCODER_PORT_1 = 2;
+    static constexpr int RIGHT_ENCODER_PORT_2 = 3;
+
 }

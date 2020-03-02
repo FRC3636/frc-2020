@@ -5,26 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/LowerElevator.h"
+#include "commands/ShootBalls.h"
 
-LowerElevator::LowerElevator(Climb* climb, std::function<double()> getZ, std::function<bool()> end) : m_climb{climb}, m_getZ{getZ}, m_shouldEnd{end} {
+ShootBalls::ShootBalls(Shooter* shooter, std::function<bool()> moveBalls, std::function<bool()> end) : m_shooter{shooter}, m_moveBalls{moveBalls}, m_end{end} {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({climb});
+  AddRequirements({m_shooter});
 }
 
 // Called when the command is initially scheduled.
-void LowerElevator::Initialize() {
-  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+void ShootBalls::Initialize() {
+  m_shooter->setShooter(true);
+  m_shooter->setLowerShooter(false);
 }
 
-void LowerElevator::Execute() {
-  m_climb->setMotor(m_getZ());
+void ShootBalls::Execute() {
+  m_shooter->setLowerShooter(m_moveBalls());
 }
 
 // Called once the command ends or is interrupted.
-void LowerElevator::End(bool interrupted) {
-  m_climb->setMotor(constant::KEEP_ELEVATOR_LEVEL_VALUE);
+void ShootBalls::End(bool interrupted) {
+  m_shooter->setShooter(false);
+  m_shooter->setLowerShooter(false);
 }
 
 // Returns true when the command should end.
-bool LowerElevator::IsFinished() { return m_shouldEnd(); }
+bool ShootBalls::IsFinished() { return m_end(); }

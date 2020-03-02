@@ -9,8 +9,10 @@ RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   m_driveTrain.SetDefaultCommand(DriveWithJoysticks(
     &m_driveTrain,
+    &m_intake,
     [this] { return -m_leftJoystick.GetY(); },
-    [this] { return m_rightJoystick.GetX(); }
+    [this] { return m_rightJoystick.GetX(); },
+    [this] { return m_leftJoystick.GetTrigger(); }
   ));
 
   // Configure the button bindings
@@ -19,9 +21,27 @@ RobotContainer::RobotContainer() {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  m_raiseElevatorButton.WhenPressed(RaiseElevator(&m_climb));
+  m_raiseElevatorButton.WhenPressed(RaiseElevator(
+    &m_climb,
+    [this] { return -(m_leftJoystick.GetZ() - 1) / 2.0; },
+    [this] { return m_leftJoystick.GetRawButton(8); }
+  ));
 
-  m_lowerElevatorButton.WhenPressed(LowerElevator(&m_climb));
+  m_lowerElevatorButton.WhenPressed(LowerElevator(
+    &m_climb,
+    [this] { return (m_rightJoystick.GetZ() - 1) / 2.0; },
+    [this] { return m_rightJoystick.GetRawButton(8); }
+  ));
+
+  m_brakeButton.WhenPressed(SetBrake(
+    &m_climb
+  ));
+
+  m_shooterButton.WhenPressed(ShootBalls(
+    &m_shooter,
+    [this] { return m_rightJoystick.GetRawButton(3); },
+    [this] { return m_rightJoystick.GetTriggerReleased(); }
+  ));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

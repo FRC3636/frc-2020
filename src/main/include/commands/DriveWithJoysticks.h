@@ -4,10 +4,11 @@
 #include <frc2/command/CommandHelper.h>
 
 #include "subsystems/DriveTrain.h"
+#include "subsystems/Intake.h"
 
 class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoysticks> {
  public:
-  explicit DriveWithJoysticks(DriveTrain* driveTrain, std::function<double()> forward, std::function<double()> turn);
+  explicit DriveWithJoysticks(DriveTrain* driveTrain, Intake* intake, std::function<double()> forward, std::function<double()> turn, std::function<bool()> shouldIntake);
 
   void Initialize() override;
 
@@ -19,6 +20,8 @@ class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWi
 
  private:
   DriveTrain* m_driveTrain;
+  Intake* m_intake;
   std::function<double()> m_forward;
   std::function<double()> m_turn;
+  std::function<bool()> m_shouldIntake;
 };

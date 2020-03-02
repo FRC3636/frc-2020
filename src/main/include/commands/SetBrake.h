@@ -9,8 +9,9 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
+#include <chrono>
 
-#include <subsystems/Climb.h>
+#include "subsystems/Climb.h"
 
 /**
  * An example command.
@@ -19,10 +20,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class LowerElevator
-    : public frc2::CommandHelper<frc2::CommandBase, LowerElevator> {
+class SetBrake
+    : public frc2::CommandHelper<frc2::CommandBase, SetBrake> {
  public:
-  LowerElevator(Climb* climb, std::function<double()> getZ, std::function<bool()> end);
+  SetBrake(Climb* climb);
 
   void Initialize() override;
 
@@ -31,8 +32,8 @@ class LowerElevator
   void End(bool interrupted) override;
 
   bool IsFinished() override;
- private:
+private:
   Climb* m_climb;
-  std::function<double()> m_getZ;
-  std::function<bool()> m_shouldEnd;
+  std::chrono::system_clock::time_point m_startTime;
+  std::chrono::duration<double> m_duration;
 };
