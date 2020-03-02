@@ -3,6 +3,8 @@
 DriveTrain::DriveTrain() {
   // Implementation of subsystem constructor goes here.
   resetEncoders();
+  m_imu.InitGyro();
+  m_imu.Calibrate();
   tankDrive(0, 0);
 }
 
@@ -30,6 +32,8 @@ void DriveTrain::updateOdometry() {
 
   m_oldTR = -m_rightEncoder.Get();
   m_oldTL = m_leftEncoder.Get();
+
+  std::cout << m_imu.GetAngle() << std::endl;
 }
 
 void DriveTrain::arcadeDrive(float forward, float turn) {
@@ -50,6 +54,8 @@ void DriveTrain::resetEncoders() {
   m_leftEncoder.SetSamplesToAverage(5);
   m_leftEncoder.SetMaxPeriod(10);
   m_leftEncoder.SetDistancePerPulse(1);
+
+  m_imu.Reset();
 
   m_oldTR = 0.0;
   m_oldTL = 0.0;

@@ -4,6 +4,7 @@
 #include <frc/Spark.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/Encoder.h>
+#include <frc/AnalogGyro.h>
 #include "Constants.h"
 #include "controlLib/SynchronousPID.h"
 
@@ -40,6 +41,8 @@ class DriveTrain : public frc2::SubsystemBase {
   frc::Spark m_leftMotor{constant::LEFT_MOTOR_PORT};
   frc::Spark m_rightMotor{constant::RIGHT_MOTOR_PORT};
   frc::DifferentialDrive m_myRobot{m_leftMotor, m_rightMotor};
+
+  frc::AnalogGyro m_imu{constant::I2C_PORT};
 
   frc::Encoder m_leftEncoder{constant::LEFT_ENCODER_PORT_1, constant::LEFT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
   frc::Encoder m_rightEncoder{constant::RIGHT_ENCODER_PORT_1, constant::RIGHT_ENCODER_PORT_2, false, frc::Encoder::EncodingType::k4X};
