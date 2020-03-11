@@ -14,7 +14,7 @@
  */
 class DriveToPoint : public frc2::CommandHelper<frc2::CommandBase, DriveToPoint> {
  public:
-  DriveToPoint(DriveTrain* driveTrain, double x, double y);
+  DriveToPoint(DriveTrain* driveTrain, double x, double y, int flipped);
 
   void Initialize() override;
 
@@ -29,4 +29,5 @@ class DriveToPoint : public frc2::CommandHelper<frc2::CommandBase, DriveToPoint>
   DriveTrain* m_driveTrain;
   double m_targetX;
   double m_targetY;
+  int m_flipped;
 };

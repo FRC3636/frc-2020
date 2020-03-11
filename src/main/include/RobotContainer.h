@@ -41,9 +41,9 @@ class RobotContainer {
   frc2::JoystickButton m_brakeButton{&m_controller, (int)frc::XboxController::Button::kStart};
   frc2::JoystickButton m_brakeOffButton{&m_controller, (int)frc::XboxController::Button::kBack};
   frc2::JoystickButton m_shooterButton{&m_controller, (int)frc::XboxController::Button::kBumperRight};
-  frc2::JoystickButton m_shooterPresetLow{&m_controller, (int)frc::XboxController::Button::kX};
   frc2::JoystickButton m_shooterPresetMid{&m_controller, (int)frc::XboxController::Button::kA};
-  frc2::JoystickButton m_shooterPresetHigh{&m_controller, (int)frc::XboxController::Button::kB};
+  frc2::JoystickButton m_shooterPresetFar{&m_controller, (int)frc::XboxController::Button::kB};
+  frc2::JoystickButton m_shooterPresetHigh{&m_controller, (int)frc::XboxController::Button::kX};
 
   // subsytems
   DriveTrain m_driveTrain;

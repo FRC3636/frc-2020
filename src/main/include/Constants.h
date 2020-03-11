@@ -12,11 +12,14 @@ namespace constant {
     static constexpr double STARTING_BOT_Y = 0;
     static constexpr double STARTING_BOT_THETA = 0;
     static constexpr double STARTING_BOT_DISTANCE = 0;
+    static constexpr int SHOOTER_FORWARD = 1;
+    static constexpr int INTAKE_FORWARD = -1;
 
     //MOTOR POWER
-    static constexpr double HIGH_MOTOR_POWER = 0.95;
-    static constexpr double MID_MOTOR_POWER = 0.75;
-    static constexpr double LOW_MOTOR_POWER = 0.555118; //used for auto
+    static constexpr double HIGH_MOTOR_POWER = 0.75;
+    static constexpr double FAR_MOTOR_POWER = 0.65;
+    static constexpr double MID_MOTOR_POWER = 0.55;
+    static constexpr double AUTO_MOTOR_POWER = 0.555118;
 
     //BOT INFO
     static constexpr double WIDTH_BETWEEN_WHEELS = 21.625;
@@ -38,12 +41,10 @@ namespace constant {
     static constexpr int RIGHT_SHOOTER_MOTOR_PORT = 7;
 
     //DIO
-    static constexpr int LOWER_LIMIT_SWITCH_PORT = 0;
-    static constexpr int UPPER_LIMIT_SWITCH_PORT = 1;
-    static constexpr int LEFT_ENCODER_PORT_1 = 2;
-    static constexpr int LEFT_ENCODER_PORT_2 = 3;
-    static constexpr int RIGHT_ENCODER_PORT_1 = 4;
-    static constexpr int RIGHT_ENCODER_PORT_2 = 5;
+    static constexpr int LEFT_ENCODER_PORT_1 = 0;
+    static constexpr int LEFT_ENCODER_PORT_2 = 1;
+    static constexpr int RIGHT_ENCODER_PORT_1 = 2;
+    static constexpr int RIGHT_ENCODER_PORT_2 = 3;
 
     //input
     static constexpr int LEFT_JOYSTICK_PORT = 0;

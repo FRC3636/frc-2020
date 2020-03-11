@@ -15,7 +15,7 @@ ShootInAuto::ShootInAuto(Intake* intake, Shooter* shooter) : m_intake{intake}, m
 // Called when the command is initially scheduled.
 void ShootInAuto::Initialize() {
   m_startTime = std::chrono::system_clock::now();
-  m_shooter->setShooter(constant::LOW_MOTOR_POWER);
+  m_shooter->setShooter(constant::AUTO_MOTOR_POWER);
 }
 
 // Called repeatedly when this Command is scheduled to run

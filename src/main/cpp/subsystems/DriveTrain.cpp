@@ -19,6 +19,7 @@ void DriveTrain::updateOdometry() {
 
   double dAV = ((tR + tL)*0.0184*2.54)/2.0;
   m_botDistance += dAV;
+  std::cout <<"distance: " << m_botDistance << std::endl;
 
   m_velocity = dAV * 50.0;
 

@@ -30,6 +30,4 @@ class Climb : public frc2::SubsystemBase {
   // declared private and exposed only through public methods.
   frc::Spark m_elevatorMotor{constant::ELEVATOR_MOTOR_PORT};
   frc::Spark m_brakeMotor{constant::ELEVATOR_BRAKE_PORT};
-  frc::DigitalInput m_lowerLimitSwitch{constant::LOWER_LIMIT_SWITCH_PORT};
-  frc::DigitalInput m_upperLimitSwitch{constant::UPPER_LIMIT_SWITCH_PORT};
 };

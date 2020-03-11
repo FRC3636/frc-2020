@@ -14,7 +14,7 @@
  */
 class TurnToPoint : public frc2::CommandHelper<frc2::CommandBase, TurnToPoint> {
  public:
-  TurnToPoint(DriveTrain* driveTrain, float x, float y);
+  TurnToPoint(DriveTrain* driveTrain, float x, float y, int shooterFront);
 
   void Initialize() override;
 
@@ -27,6 +27,7 @@ class TurnToPoint : public frc2::CommandHelper<frc2::CommandBase, TurnToPoint> {
   DriveTrain* m_driveTrain;
   float m_targetX;
   float m_targetY;
+  int m_shooterFront;
 
   double getAngle(double x, double y);
 };

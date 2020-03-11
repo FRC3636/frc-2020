@@ -49,7 +49,7 @@ void RobotContainer::ConfigureButtonBindings() {
   m_shooterPresetHigh.WhenPressed(ShootWithPreset(
     &m_shooter,
     constant::HIGH_MOTOR_POWER,
-    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kB); }
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kX); }
   ));
 
   m_shooterPresetMid.WhenPressed(ShootWithPreset(
@@ -58,10 +58,10 @@ void RobotContainer::ConfigureButtonBindings() {
     [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kA); }
   ));
 
-  m_shooterPresetLow.WhenPressed(ShootWithPreset(
+  m_shooterPresetFar.WhenPressed(ShootWithPreset(
     &m_shooter,
-    constant::LOW_MOTOR_POWER,
-    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kX); }
+    constant::FAR_MOTOR_POWER,
+    [this] { return m_controller.GetRawButtonReleased((int)frc::XboxController::Button::kB); }
   ));
 }
 

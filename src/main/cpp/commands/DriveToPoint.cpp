@@ -7,30 +7,30 @@
 
 #include "commands/DriveToPoint.h"
 
-DriveToPoint::DriveToPoint(DriveTrain* driveTrain, double x, double y) : m_driveTrain{driveTrain}, m_targetX{x}, m_targetY{y} {
+DriveToPoint::DriveToPoint(DriveTrain* driveTrain, double x, double y, int flipped) : m_driveTrain{driveTrain}, m_targetX{x}, m_targetY{y}, m_flipped{flipped} {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({driveTrain});
 }
 
 // Called when the command is initially scheduled.
 void DriveToPoint::Initialize() {
-  m_targetX -= m_driveTrain->getX();
-  m_targetY -= m_driveTrain->getY();
+  m_targetX -= m_flipped * m_driveTrain->getX();
+  m_targetY -= m_flipped * m_driveTrain->getY();
   m_driveTrain->arcadeDrive(0, 0);
+  m_driveTrain->resetDistance();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToPoint::Execute() {
-  std::cout << "drive" << std::endl;
-  m_driveTrain->m_drivePID.setSetPoint(-getDistance(m_targetX, m_targetY));
-  double v = m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance());
+  m_driveTrain->m_drivePID.setSetPoint(m_flipped * getDistance(m_targetX, m_targetY));
+  double v = -m_driveTrain->m_drivePID.calculate(m_driveTrain->getBotDistance());
+  std::cout << "v: " << v << std::endl;
   m_driveTrain->tankDrive(v, v);
 }
 
 // Called once the command ends or is interrupted.
 void DriveToPoint::End(bool interrupted) {
   m_driveTrain->arcadeDrive(0, 0);
-  m_driveTrain->resetDistance();
 }
 
 // Returns true when the command should end.
