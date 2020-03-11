@@ -20,6 +20,10 @@ RobotContainer::RobotContainer() {
   ConfigureButtonBindings(); 
 }
 
+void RobotContainer::outputCameraData() {
+  std::cout << "Angle: " << m_handler.getAngle() << ", Distance: " << m_handler.getDistance() << std::endl;
+}
+
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   m_raiseElevatorButton.WhenPressed(RaiseElevator(

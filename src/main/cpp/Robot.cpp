@@ -6,7 +6,9 @@ void Robot::RobotInit() {
   cs::CvSource outputStream = frc::CameraServer::GetInstance()->PutVideo("Camera", 640, 480);
 }
 
-void Robot::RobotPeriodic() {}
+void Robot::RobotPeriodic() {
+  m_container.outputCameraData();
+}
 
 void Robot::DisabledInit() {}
 
