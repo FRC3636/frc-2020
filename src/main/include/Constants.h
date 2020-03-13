@@ -41,10 +41,8 @@ namespace constant {
     static constexpr int RIGHT_SHOOTER_MOTOR_PORT = 7;
 
     //DIO
-    static constexpr int LEFT_ENCODER_PORT_1 = 0;
-    static constexpr int LEFT_ENCODER_PORT_2 = 1;
-    static constexpr int RIGHT_ENCODER_PORT_1 = 2;
-    static constexpr int RIGHT_ENCODER_PORT_2 = 3;
+    static constexpr std::pair<int, int> LEFT_ENCODER_PORTS = std::pair(0, 1);
+    static constexpr std::pair<int, int> RIGHT_ENCODER_PORTS = std::pair(2, 3);
 
     //input
     static constexpr int LEFT_JOYSTICK_PORT = 0;
