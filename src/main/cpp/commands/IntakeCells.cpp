@@ -5,18 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Intake.h"
+#include "commands/IntakeCells.h"
 
-Intake::Intake() {}
-
-void Intake::activateIntake() {
-    m_intakeMotor.Set(1);
+IntakeCells::IntakeCells(Intake* intake) : m_intake{intake} {
+  AddRequirements(m_intake);
 }
 
-void Intake::activateIntakeReverse() {
-    m_intakeMotor.Set(-1);
+void IntakeCells::Initialize() {
+  // At the begining, activate the intake
+  m_intake->activateIntake();
 }
 
-void Intake::stopIntake() {
-    m_intakeMotor.Set(0);
+void IntakeCells::Execute() {}
+
+void IntakeCells::End(bool interrupted) {
+  // At the end, stop the intake
+  m_intake->stopIntake();
 }
+
+bool IntakeCells::IsFinished() { return false; }

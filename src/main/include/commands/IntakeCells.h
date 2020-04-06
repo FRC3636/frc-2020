@@ -9,26 +9,17 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <subsystems/Intake.h>
-#include <subsystems/Shooter.h>
-#include <subsystems/Conveyor.h>
-#include "Constants.h"
 
-/**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
- */
+#include "subsystems/Intake.h"
 
 // ########## REVIEW ##########
-// Now that I've divided Intake in two subsystems, what you need is no longer the Intake but the Conveyor
-
-class ShootInAuto
-    : public frc2::CommandHelper<frc2::CommandBase, ShootInAuto> {
+// This command is meant to be active when the driver want to take cells
+// This command only activate the intake (motor to 1)
+// The logic (driver input) is on the RobotContainer side not on this command
+class IntakeCells
+    : public frc2::CommandHelper<frc2::CommandBase, IntakeCells> {
  public:
-  ShootInAuto(Conveyor* conveyor, Shooter* shooter);
+  IntakeCells(Intake* intake);
 
   void Initialize() override;
 
@@ -37,9 +28,7 @@ class ShootInAuto
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-private:
-  Conveyor* m_conveyor;
-  Shooter* m_shooter;
-  std::chrono::system_clock::time_point m_startTime;
-  std::chrono::duration<double> m_duration;
+
+ private:
+  Intake* m_intake;
 };

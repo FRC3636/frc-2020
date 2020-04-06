@@ -17,12 +17,16 @@
 #include "commands/SetBrake.h"
 #include "commands/ShootBalls.h"
 #include "commands/ShootWithPreset.h"
+#include "commands/IntakeCells.h"
+#include "commands/OuttakeCells.h"
+#include "commands/ConveyCells.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/ControlPanelHandler.h"
 #include "subsystems/Climb.h"
 #include "subsystems/NetworkTableHandler.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
+#include "subsystems/Conveyor.h"
 
 class RobotContainer {
  public:
@@ -48,6 +52,13 @@ class RobotContainer {
   frc2::JoystickButton m_shooterPresetFar{&m_controller, (int)frc::XboxController::Button::kB};
   frc2::JoystickButton m_shooterPresetHigh{&m_controller, (int)frc::XboxController::Button::kX};
 
+  // ########## REVIEW ##########
+  // Buttons to control the intake and the conveyor
+  // I tried to keep the same button as before
+  frc2::JoystickButton m_intakeButton{&m_controller, (int)frc::XboxController::Button::kBumperLeft};
+  frc2::JoystickButton m_intakeReverseButton{&m_controller, (int)frc::XboxController::Button::kY};
+  frc2::JoystickButton m_conveyorButton{&m_rightJoystick, 1}; // Trigger button = button 1
+
   // subsytems
   DriveTrain m_driveTrain;
   ControlPanelHandler m_controlPanelHandler;
@@ -55,6 +66,7 @@ class RobotContainer {
   NetworkTableHandler m_handler;
   Shooter m_shooter;
   Intake m_intake;
+  Conveyor m_conveyor;
 
   // commands
   Auto m_auto{&m_driveTrain, &m_shooter, &m_intake};

@@ -9,26 +9,16 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <subsystems/Intake.h>
-#include <subsystems/Shooter.h>
-#include <subsystems/Conveyor.h>
-#include "Constants.h"
 
-/**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
- */
+#include "subsystems/Conveyor.h"
 
 // ########## REVIEW ##########
-// Now that I've divided Intake in two subsystems, what you need is no longer the Intake but the Conveyor
+// Exactly like the IntakeCells and OuttakeCells commands but for the conveyor
 
-class ShootInAuto
-    : public frc2::CommandHelper<frc2::CommandBase, ShootInAuto> {
+class ConveyCells
+    : public frc2::CommandHelper<frc2::CommandBase, ConveyCells> {
  public:
-  ShootInAuto(Conveyor* conveyor, Shooter* shooter);
+  ConveyCells(Conveyor* conveyor);
 
   void Initialize() override;
 
@@ -37,9 +27,7 @@ class ShootInAuto
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-private:
+
+ private:
   Conveyor* m_conveyor;
-  Shooter* m_shooter;
-  std::chrono::system_clock::time_point m_startTime;
-  std::chrono::duration<double> m_duration;
 };
