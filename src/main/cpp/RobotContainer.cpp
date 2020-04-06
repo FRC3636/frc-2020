@@ -11,9 +11,7 @@ RobotContainer::RobotContainer() {
     &m_driveTrain,
     &m_intake,
     [this] { return m_leftJoystick.GetY(); },
-    [this] { return m_rightJoystick.GetX(); },
-    [this] { return getIntake(); },
-    [this] { return m_rightJoystick.GetTrigger(); }
+    [this] { return m_rightJoystick.GetX(); }
   ));
 
   // Configure the button bindings
@@ -25,6 +23,16 @@ void RobotContainer::outputCameraData() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+  // ########## REVIEW ##########
+  // Because intaking and conveying is no longer in DriveWithJoystick, we have to assign a button to it
+  // WhileActiveContinous permit to "Binds a command to be started repeatedly while the
+  // trigger is active, and cancelled when it becomes inactive". That's what we want !!!
+  //
+  // These frc2::JoystickButton replace your getIntake() function
+  m_intakeButton.WhileActiveContinous(IntakeCells(&m_intake));
+  m_intakeReverseButton.WhileActiveContinous(OuttakeCells(&m_intake));
+  m_conveyorButton.WhileActiveContinous(ConveyCells(&m_conveyor));
+
   // Configure your button bindings here
   m_raiseElevatorButton.WhenPressed(RaiseElevator(
     &m_climb,
@@ -76,14 +84,4 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
 
 void RobotContainer::Reset() {
   m_driveTrain.resetEncoders();
-}
-
-double RobotContainer::getIntake() {
-  if(m_controller.GetRawButton((int)frc::XboxController::Button::kBumperLeft)) {
-    return 1;
-  } else if(m_controller.GetRawButton((int)frc::XboxController::Button::kY)) {
-    return -1;
-  } else {
-    return 0;
-  }
 }

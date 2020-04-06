@@ -6,9 +6,13 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Intake.h"
 
+// ########## REVIEW ##########
+// DriveWithJoystick shouldn't control the intake, this should be done in a separate command -> IntakeCells
+// Because I divided the Intake in two move balls is in the ConveyCells command
+
 class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoysticks> {
  public:
-  explicit DriveWithJoysticks(DriveTrain* driveTrain, Intake* intake, std::function<double()> forward, std::function<double()> turn, std::function<double()> shouldIntake, std::function<bool()> shouldMoveBalls);
+  explicit DriveWithJoysticks(DriveTrain* driveTrain, Intake* intake, std::function<double()> forward, std::function<double()> turn);
 
   void Initialize() override;
 
@@ -23,6 +27,4 @@ class DriveWithJoysticks : public frc2::CommandHelper<frc2::CommandBase, DriveWi
   Intake* m_intake;
   std::function<double()> m_forward;
   std::function<double()> m_turn;
-  std::function<double()> m_shouldIntake;
-  std::function<bool()> m_shouldMoveBalls;
 };

@@ -9,39 +9,31 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/VictorSP.h>
-#include <frc/Victor.h>
 #include "Constants.h"
 
   // ########## REVIEW ##########
-  // I moved the lower shooter from the intake subsystem to the Conveyor subsytem.
-  // Indeed, it seems like the lower shooter and the intake are two independant mechanisms.
-  // They have different functions : intaking and convey
+  // This subsystem control the conveyor (aka the lower Shooter)
+  // I divided the Intake subsytem in two because these two mechanisms seems independant
 
-class Intake : public frc2::SubsystemBase {
+class Conveyor : public frc2::SubsystemBase {
  public:
-  Intake();
+  Conveyor();
 
   // ########## REVIEW ##########
-  // I find the function "setIntake(double intaking)" weird :
-  // I would divide the method setIntake(double intaking) into these three methods
+  // Exactly like for the intake, I separated your methods in two (without any argument):
 
   /**
    * Set the motor to 1
    */
-  void activateIntake();
-
-    /**
-   * Set the motor to -1
-   */
-  void activateIntakeReverse();
+  void activateConveyor();
 
   /**
    * Stop the motor
    */
-  void stopIntake();
+  void stopConveyor();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::VictorSP m_intakeMotor{constant::INTAKE_MOTOR_PORT};
+  frc::VictorSP m_lowerShooterMotor{constant::SHOOTER_BASE_MOTOR_PORT};
 };

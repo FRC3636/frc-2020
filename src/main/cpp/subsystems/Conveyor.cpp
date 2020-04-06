@@ -5,18 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Intake.h"
+#include "subsystems/Conveyor.h"
 
-Intake::Intake() {}
+Conveyor::Conveyor() {}
 
-void Intake::activateIntake() {
-    m_intakeMotor.Set(1);
+// This method will be called once per scheduler run
+void Conveyor::activateConveyor() {
+    m_lowerShooterMotor.Set(1);
 }
 
-void Intake::activateIntakeReverse() {
-    m_intakeMotor.Set(-1);
-}
-
-void Intake::stopIntake() {
-    m_intakeMotor.Set(0);
+void Conveyor::stopConveyor() {
+    m_lowerShooterMotor.Set(0);
 }

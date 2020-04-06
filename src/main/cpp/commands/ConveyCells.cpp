@@ -5,18 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Intake.h"
+#include "commands/ConveyCells.h"
 
-Intake::Intake() {}
-
-void Intake::activateIntake() {
-    m_intakeMotor.Set(1);
+ConveyCells::ConveyCells(Conveyor* conveyor) : m_conveyor{conveyor} {
+  AddRequirements(m_conveyor);
 }
 
-void Intake::activateIntakeReverse() {
-    m_intakeMotor.Set(-1);
+void ConveyCells::Initialize() {
+  // At the begining, activate the conveyor
+  m_conveyor->activateConveyor();
 }
 
-void Intake::stopIntake() {
-    m_intakeMotor.Set(0);
+void ConveyCells::Execute() {}
+
+void ConveyCells::End(bool interrupted) {
+  // At the end, stop the intake
+  m_conveyor->stopConveyor();
 }
+
+bool ConveyCells::IsFinished() { return false; }

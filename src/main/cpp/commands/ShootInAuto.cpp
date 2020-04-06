@@ -7,9 +7,9 @@
 
 #include "commands/ShootInAuto.h"
 
-ShootInAuto::ShootInAuto(Intake* intake, Shooter* shooter) : m_intake{intake}, m_shooter{shooter} {
+ShootInAuto::ShootInAuto(Conveyor* conveyor, Shooter* shooter) : m_conveyor{conveyor}, m_shooter{shooter} {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({m_intake, m_shooter});
+  AddRequirements({m_conveyor, m_shooter});
 }
 
 // Called when the command is initially scheduled.
@@ -20,14 +20,14 @@ void ShootInAuto::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShootInAuto::Execute() {
-  m_intake->setLowerShooter(true);
+  m_conveyor->activateConveyor();
   std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
   m_duration = currentTime - m_startTime;
 }
 
 // Called once the command ends or is interrupted.
 void ShootInAuto::End(bool interrupted) {
-  m_intake->setLowerShooter(false);
+  m_conveyor->stopConveyor();
   m_shooter->setShooter(0);
 }
 
